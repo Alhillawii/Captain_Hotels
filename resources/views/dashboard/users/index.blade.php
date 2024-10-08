@@ -14,6 +14,7 @@
             <tr>
                 <th>Full Name</th>
                 <th>Email</th>
+                <th>Image</th>
                 <th>Address</th>
                 <th>Gender</th>
                 <th>Role</th>
@@ -25,17 +26,20 @@
             <tr>
                 <td>{{ $user->FullName }}</td>
                 <td>{{ $user->Email }}</td>
+                <td>
+                    <img src="{{asset($user->Image)}}" style="width: 50px; height:50px;" alt="Image"/>
+                </td>
                 <td>{{ $user->Address }}</td>
                 <td>{{ $user->Gender }}</td>
                 <td>
-                    @if ($user->Role == 'Admin')
-                    <span class="badge rounded-pill bg-label-success me-1">Admin</span>
+                    @if ($user->Role == 'Supervisor')
+                    <span class="badge rounded-pill bg-success me-1">Supervisor</span>
                     @elseif ($user->Role == 'User')
-                    <span class="badge rounded-pill bg-label-primary me-1">User</span>
-                    @elseif ($user->Role == 'Moderator')
-                    <span class="badge rounded-pill bg-label-warning me-1">Moderator</span>
-                    @else
-                    <span class="badge rounded-pill bg-label-secondary me-1">Unknown</span>
+                    <span class="badge rounded-pill bg-primary me-1">User</span>
+                    @elseif ($user->Role == 'Manager')
+                    <span class="badge rounded-pill bg-warning me-1">Manager</span>
+                    @elseif ($user->Role == 'Employee')
+                    <span class="badge rounded-pill bg-dark me-1">Employee</span>
                     @endif
                 </td>
 
@@ -98,7 +102,7 @@
         if (successMessage) {
             setTimeout(() => {
                 successMessage.style.display = 'none';
-            }, 180000);
+            }, 3000);
         }
     });
 </script>

@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Employee;
 use App\Models\Manager;
 use App\Models\Room;
 use App\Models\Supervisor;
@@ -16,7 +15,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id('id');
+            $table->id();
             $table->string('FullName');
             $table->enum('Gender', ['Male', 'Female']);
             $table->string('Address')->nullable();
@@ -29,7 +28,6 @@ return new class extends Migration
             $table->foreignIdFor(Room::class, 'room_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignIdFor(Supervisor::class, 'Supervisor_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignIdFor(Manager::class, 'manager_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignIdFor(Employee::class)->nullable()->constrained()->nullOnDelete();
             $table->softDeletes();
             $table->timestamps();
         });

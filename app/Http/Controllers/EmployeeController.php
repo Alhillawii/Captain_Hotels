@@ -3,14 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
     public function index()
     {
-        $employees = Employee::all();
+        
+        // $employees = Employee::all();
+        $employees = User::with('employee')
+        ->whereHas('employee', function ($query) {
+            $query->where('Role', 'Employee');
+        })
+        ->get();
         return view('dashboard.employee.index', compact('employees'));
+                //    return dd($Employee);
+        
     }
 
     public function create()

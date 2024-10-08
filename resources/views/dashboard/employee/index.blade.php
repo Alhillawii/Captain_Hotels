@@ -12,8 +12,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Full Name</th>
                 <th>Position</th>
                 <th>Age</th>
                 <th>Job-Specific</th>
@@ -24,10 +23,9 @@
         <tbody>
             @foreach ($employees as $employee)
             <tr>
-                <td>{{ $employee->First_Name }}</td>
-                <td>{{ $employee->Last_Name }}</td>
+                <td>{{ $employee->FullName }}</td>
                 <td>{{ $employee->Emp_position }}</td>
-                <td>{{ $employee->Age }}</td>
+                <td>{{ $employee->age }}</td>
                 <td>{{ $employee->{'job-specific'} }}</td>
                 <td>{{ $employee->employment_date }}</td>
                 <td>
@@ -88,7 +86,7 @@
         if (successMessage) {
             setTimeout(() => {
                 successMessage.style.display = 'none';
-            }, 180000);
+            }, 3000);
         }
     });
 </script>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('number_of_persons');
             $table->string('Camp_img')->nullable();
             $table->integer('camp_days');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

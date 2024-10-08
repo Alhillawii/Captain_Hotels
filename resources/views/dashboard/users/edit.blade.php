@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <h1>Edit User</h1>
-    <form action="{{ route('users.update', $user) }}" method="POST">
+    <form action="{{ route('users.update', $user) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
@@ -20,12 +20,15 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="Address">Address</label>
-            <input type="text" name="Address" class="form-control" value="{{ $user->Address }}">
+            <label>Image URL</label>
+            <input type="file" name="Image" class="form-control">
+            @if($user->Image)
+                <img src="{{ asset($user->Image) }}" style="width: 100px; height: 100px;" alt="Image">
+            @endif
         </div>
         <div class="form-group">
-            <label for="Image">Image URL</label>
-            <input type="text" name="Image" class="form-control" value="{{ $user->Image }}">
+            <label for="Address">Address</label>
+            <input type="text" name="Address" class="form-control" value="{{ $user->Address }}">
         </div>
         <div class="form-group">
             <label for="mobile">Mobile</label>
@@ -42,6 +45,34 @@
         <div class="form-group">
             <label for="age">Age</label>
             <input type="number" name="age" class="form-control" value="{{ $user->age }}">
+        </div>
+        <div class="form-group">
+            <label for="Role">Role</label>
+            <select name="Role" class="form-control"  required>
+                <!-- <option value=""  disabled selected>Select Role</option> -->
+                <option value="Supervisor" 
+                @if($user->Role == "Supervisor")
+                selected
+                @endif
+                >
+                Supervisor</option>
+                <option value="User"
+                 @if($user->Role == "User") 
+                 selected
+                 @endif
+                 >User</option>
+                <option value="Manager" 
+                @if($user->Role == "Manager") 
+                selected
+                @endif
+                >Manager</option>
+                <option value="Employee" 
+                @if($user->Role == "Employee") 
+                selected
+                @endif
+                >Employee</option>
+
+            </select>
         </div>
         <br>
         <button type="submit" class="btn btn-primary border-0" style="background-color: #16325B;">Update</button>

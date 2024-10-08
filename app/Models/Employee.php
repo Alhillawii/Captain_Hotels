@@ -14,10 +14,10 @@ class Employee extends Model
 
 
 
-    public function users()
-    {
-        return $this->hasOne(User::class);
-    }
+    // public function users()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 
    
 }

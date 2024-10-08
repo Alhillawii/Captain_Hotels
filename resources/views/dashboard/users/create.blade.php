@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
     <h1>Add User</h1>
-    <form action="{{ route('users.store') }}" method="POST">
+    <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="FullName">Full Name</label>
@@ -22,8 +22,8 @@
             <input type="text" name="Address" class="form-control">
         </div>
         <div class="form-group">
-            <label for="Image">Image URL</label>
-            <input type="text" name="Image" class="form-control">
+            <label>Image URL</label>
+            <input type="file" name="Image" class="form-control">
         </div>
         <div class="form-group">
             <label for="mobile">Mobile</label>
@@ -41,8 +41,20 @@
             <label for="age">Age</label>
             <input type="number" name="age" class="form-control">
         </div>
+         <div class="form-group">
+            <label for="Role">Role</label>
+            <select name="Role" class="form-control" required>
+                <option value="" disabled selected>Select Role</option>
+                <option value="Supervisor">Supervisor</option>
+                <option value="User">User</option>
+                <option value="Manager">Manager</option>
+                <option value="Employee">Employee</option>
+                
+            </select>
+        </div>
         <br>
         <button type="submit" class="btn btn-primary border-0" style="background-color: #16325B;">Submit</button>
+        <a href="{{ route('users.index') }}" class="btn btn-secondary">Back</a>
 
     </form>
 </div>

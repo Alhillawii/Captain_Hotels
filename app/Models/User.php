@@ -6,10 +6,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
+use Laravel\Scout\Attributes\SearchUsingPrefix;
 
 class User extends Authenticatable
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes , Searchable;
 
     protected $fillable = [
        'FullName',
@@ -23,6 +25,7 @@ class User extends Authenticatable
            'Room_ID', 
            'ID_Super',
             'ID_Manager',
+            'Role',
     
     ];
 
@@ -41,10 +44,26 @@ class User extends Authenticatable
         return $this->belongsTo(Manager::class);
     }
 
-    public function employee()
+    // public function employee()
+    // {
+    //     return $this->hasOne(Employee::class);
+    // }
+
+
+ 
+
+    public function toSearchableArray()
     {
-        return $this->belongsTo(Employee::class);
-    }
+        return [
+            'FullName' =>$this->FullName,
+            'Gender' =>$this->Gender, 
+               'Email' =>$this->Email, 
+                'Role' =>$this->Role,
+                'Address' =>$this->Address,
+        ];
+    } 
+        
+    
 
 
     

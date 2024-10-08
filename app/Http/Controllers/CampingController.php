@@ -7,59 +7,110 @@ use Illuminate\Http\Request;
 
 class CampingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $campings = Camping::all();
+        // dd($campings);
+        return view('dashboard.camping.index', compact('campings'));
     }
+    
 
-    /**
-     * Show the form for creating a new resource.
-     */
+  
     public function create()
     {
-        //
+        return view('dashboard.camping.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'number_of_persons' => 'required|integer',
+            'Camp_img' =>  'nullable|mimes:png,jpg,jpeg,webp',
+            'camp_days' => 'required|integer',
+        ]);
+
+        if($request->has('Camp_img')){
+           
+            $file = $request->file('Camp_img');
+            $extension = $file->getClientOriginalExtension();
+
+            $filename = time().'.'.$extension;
+
+            $path = 'uploads/Camp_img/';
+            $file->move($path, $filename);
+        }
+ 
+        Camping::create([
+            'number_of_persons' => $request->number_of_persons,
+            'Camp_img' => $path.$filename,
+            'camp_days' => $request->camp_days,
+        ]);
+        // Camping::create($request->all());
+
+        return redirect()->route('campings.index')->with('success', 'Camping created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+   
     public function show(Camping $camping)
     {
-        //
+        return view('dashboard.camping.show', compact('camping'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(Camping $camping)
     {
-        //
+        return view('dashboard.camping.edit', compact('camping'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, Camping $camping)
     {
-        //
+        $request->validate([
+            'number_of_persons' => 'required|integer',
+            'Camp_img' => 'nullable',
+            'Camp_img.*' => 'mimes:png,jpg,jpeg,webp',
+            'camp_days' => 'required|integer',
+        ]);
+
+        if($request->has('Camp_img')){
+           
+            $file = $request->file('Camp_img');
+            $extension = $file->getClientOriginalExtension();
+
+            $filename = time().'.'.$extension;
+
+            $path = 'uploads/Camp_img/';
+            $file->move($path, $filename);
+
+            // if(File::exists(path: $user->Image)){
+            //     File::delete($user->Image);
+
+            // }
+        }
+
+
+        // $camping->update($request->all());
+        $camping->update([
+            'number_of_persons' => $request->number_of_persons,
+            'camp_days' => $request->camp_days,
+        ]);
+
+        if (
+            isset($path)) {
+           $camping->update([
+             'Camp_img' => $path.$filename,
+           ]);
+         }
+
+        return redirect()->route('campings.index')->with('success', 'Camping updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(Camping $camping)
     {
-        //
+        $camping->delete();
+
+        return redirect()->route('campings.index')->with('success', 'Camping deleted successfully.');
     }
 }

@@ -14,12 +14,12 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->string('Room_Type');
-            $table->boolean('availability_status');
-            $table->text('Room_description');
-            $table->decimal('Room_Rate', 8, 2);
-            $table->string('Room_img')->nullable();
-            $table->integer('capacity');
+            $table->string('Roomtype');
+            $table->string('price');
+            $table->boolean('status');
+            $table->text('description');
+            $table->decimal('Rate', 8, 2);
+            $table->string('Roomimage')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

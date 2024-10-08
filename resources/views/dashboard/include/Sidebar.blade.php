@@ -22,12 +22,16 @@
     <i class="fa fa-keyboard me-2" style="color: #16325B;"></i>Employee
 </a>
 
-            <a href="/table.html" class="nav-item nav-link {{ Request::is('table') ? 'active' : '' }}" style="color: #16325B;">
-                <i class="fa fa-table me-2" style="color: #16325B;"></i>Tables
+            <a href="{{ route('campings.index') }}" class="nav-item nav-link {{ Request::is('campings') ? 'active' : '' }}" style="color: #16325B;">
+                <i class="fa fa-table me-2" style="color: #16325B;"></i>Camping
             </a>
-            <a href="/chart.html" class="nav-item nav-link {{ Request::is('chart') ? 'active' : '' }}" style="color: #16325B;">
-                <i class="fa fa-chart-bar me-2" style="color: #16325B;"></i>Charts
+            <a href="{{ route('rooms.index') }}" class="nav-item nav-link {{ Request::is('rooms') ? 'active' : '' }}" style="color: #16325B;">
+                <i class="fa fa-chart-bar me-2" style="color: #16325B;"></i>Room
             </a>
+            <a href="{{ route('contacts.index') }}" class="nav-item nav-link {{ Request::is('contacts') ? 'active' : '' }}" style="color: #16325B; display: flex; align-items: center;">
+            <i class="fa fa-address-book" style="color: #16325B; margin-right: 8px;"></i>Contact
+</a>
+
         </div>
     </nav>
 </div>
