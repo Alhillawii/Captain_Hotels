@@ -11,6 +11,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Message</th>
@@ -20,6 +21,7 @@
         <tbody>
             @foreach ($contacts as $contact)
             <tr>
+                <td>{{ $contact->id }}</td>
                 <td>{{ $contact->Name }}</td>
                 <td>{{ $contact->Email }}</td>
                 <td>{{ $contact->Message }}</td>

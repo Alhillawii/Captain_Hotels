@@ -10,10 +10,18 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
     
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = Contact::all(); 
-        return view('dashboard.contact.index', compact('contacts')); 
+        
+        $contacts_query = Contact::query();
+      $search_param = $request->query('search');
+      if (!empty($search_param)) {
+          $contacts_query = Contact::search($search_param);
+      }
+        $ContactsFromDB = $contacts_query->get();
+
+
+        return view('dashboard.contact.index', ['contacts'=>$ContactsFromDB]); 
     }
 
     

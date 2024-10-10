@@ -12,43 +12,45 @@
     <table class="table">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Full Name</th>
                 <th>Position</th>
-                <th>Age</th>
-                <th>Job-Specific</th>
+                <th>Job Specific</th>
                 <th>Employment Date</th>
+                <th>Email</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($employees as $employee)
+            <?php
+            // var_dump($employees[0])
+             ?>
+            @foreach ($employees as $user)
             <tr>
-                <td>{{ $employee->FullName }}</td>
-                <td>{{ $employee->Emp_position }}</td>
-                <td>{{ $employee->age }}</td>
-                <td>{{ $employee->{'job-specific'} }}</td>
-                <td>{{ $employee->employment_date }}</td>
-                <td>
+                <td>{{ $user->id }}</td>
+                <td>{{ $user->FullName }}</td>
+                <td>{{ $user->employee->Emp_position }}</td>
+                <td>{{ $user->employee->job_specific }}</td>
+                <td>{{ $user->employee->employment_date }}</td>
+                <td>{{ $user->Email }}</td>
 
-                    <a href="{{ route('employees.show', $employee->id) }}" class="btn" title="View">
+                <td>
+                    <a href="{{ route('employees.show', $user->id) }}" class="btn" title="View">
                         <i class="fas fa-eye" style="color: #17a2b8;"></i>
                     </a>
 
-
-                    <a href="{{ route('employees.edit', $employee->id) }}" class="btn" title="Edit">
+                    <a href="{{ route('employees.edit', $user->id) }}" class="btn" title="Edit">
                         <i class="fas fa-edit" style="color: #ffc107;"></i>
                     </a>
 
-
-                    <form action="{{ route('employees.destroy', $employee->id) }}" method="POST" class="d-inline delete-form">
+                    <form action="{{ route('employees.destroy', $user->id) }}" method="POST" class="d-inline delete-form" style="display:inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="button" class="btn delete-btn" title="Delete">
+                        <a href="javascript:void(0);" class="btn delete-btn" title="Delete">
                             <i class="fas fa-trash" style="color: red;"></i>
-                        </button>
+                        </a>
                     </form>
                 </td>
-
             </tr>
             @endforeach
         </tbody>
@@ -62,11 +64,10 @@
                 event.preventDefault();
 
                 const form = this.closest('.delete-form');
-                const userName = form.closest('tr').querySelector('td').innerText;
 
                 Swal.fire({
                     title: 'Are you sure?',
-                    text: `You are about to delete ${userName}. This action cannot be undone!`,
+                    text: 'This action cannot be undone!',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#d33',
@@ -80,7 +81,6 @@
                 });
             });
         });
-
 
         const successMessage = document.getElementById('success-message');
         if (successMessage) {

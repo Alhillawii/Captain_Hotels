@@ -12,6 +12,8 @@ class Booking extends Model
 
     protected $guarded = [];
 
+    protected $table = 'booking';
+
 
 
     public function room()

@@ -10,14 +10,23 @@ class Employee extends Model
 {
     use HasFactory , SoftDeletes;
 
-    protected $guarded = [];
+    
+
+    protected $fillable = [
+        'Emp_position',
+        'job-specific',
+        'employment_date',
+        'user_id',
+
+    ];
 
 
 
-    // public function users()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
 
    
 }

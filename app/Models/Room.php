@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
+use App\Models\User;
 
 class Room extends Model
 {
-    use HasFactory ,SoftDeletes;
+    use HasFactory ,SoftDeletes , Searchable;
     protected $guarded = [];
 
 
@@ -20,9 +22,20 @@ class Room extends Model
         return $this->hasMany(Booking::class);
     }
 
-    public function users()
+    public function user()  
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);  
     }
+
+    public function toSearchableArray()
+    {
+        return [
+            'Roomtype' =>$this->Roomtype,
+            'price' =>$this->price, 
+               'status' =>$this->status, 
+                'description' =>$this->description,
+                'Rate' =>$this->Rate,
+        ];
+    } 
 
 }

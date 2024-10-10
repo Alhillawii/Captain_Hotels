@@ -12,6 +12,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Room Type</th>
                 <th>Price</th>
                 <th>Status</th>
@@ -23,13 +24,14 @@
         <tbody>
             @foreach ($rooms as $room)
             <tr>
+                <td>{{ $room->id }}</td>
                 <td>{{ $room->Roomtype }}</td>
                 <td>{{ $room->price }}</td>
                 <td>{{ $room->status ? 'Available' : 'Occupied' }}</td>
                 <td>{{ $room->Rate }}</td>
                 <td>
                     @if ($room->Roomimage)
-                        <img src="{{ asset($room->Roomimage) }}" style="width: 50px; height: 50px;" alt="Room Image"/>
+                        <img src="dash/{{ asset($room->Roomimage) }}" style="width: 50px; height: 50px;" alt="Room Image"/>
                     @else
                         No image
                     @endif

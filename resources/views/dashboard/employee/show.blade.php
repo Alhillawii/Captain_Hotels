@@ -4,17 +4,29 @@
 <div class="container">
     <h1>Employee Details</h1>
 
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Full Name: {{ $employee->First_Name }} {{ $employee->Last_Name }}</h5>
-            <p class="card-text"><strong>Position:</strong> {{ $employee->Emp_position }}</p>
-            <p class="card-text"><strong>Age:</strong> {{ $employee->Age }}</p>
-            <p class="card-text"><strong>Job-Specific:</strong> {{ $employee->{'job-specific'} }}</p>
-            <p class="card-text"><strong>Employment Date:</strong> {{ $employee->employment_date }}</p>
-        </div>
-    </div>
+    <table class="table">
+        <tr>
+            <th>Full Name</th>
+            <td>{{ $employee->user->FullName }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ $employee->user->email }}</td>
+        </tr>
+        <tr>
+            <th>Position</th>
+            <td>{{ $employee->Emp_position }}</td>
+        </tr>
+        <tr>
+            <th>Job Specific</th>
+            <td>{{ $employee->job_specific }}</td>
+        </tr>
+        <tr>
+            <th>Employment Date</th>
+            <td>{{ $employee->employment_date }}</td>
+        </tr>
+    </table>
 
-    <br>
-    <a href="{{ route('employees.index') }}" class="btn btn-secondary">Back to Employees</a>
+    <a href="{{ route('employees.index') }}" class="btn btn-primary">Back to Employee List</a>
 </div>
 @endsection

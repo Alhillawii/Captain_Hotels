@@ -7,11 +7,20 @@ use Illuminate\Http\Request;
 
 class CampingController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $campings = Camping::all();
-        // dd($campings);
-        return view('dashboard.camping.index', compact('campings'));
+        // $campings = Camping::all();
+        // // dd($campings);
+        // return view('dashboard.camping.index', compact('campings'));
+
+        $campings_query = Camping::query();
+        $search_param = $request->query('search');
+        if (!empty($search_param)) {
+            $campings_query = Camping::search($search_param);
+        }
+          $CampingsFromDB = $campings_query->get();
+  
+          return view('dashboard.camping.index', ['campings'=>$CampingsFromDB]);
     }
     
 

@@ -14,13 +14,10 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('FullName');
-            $table->string('Email');
-            $table->integer('age');
             $table->string('Emp_position');
-            $table->string('job-specific');
+            $table->string('job_specific'); 
             $table->date('employment_date');
-            // $table->foreignIdFor(User::class, 'user_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class, 'user_id')->nullable()->constrained()->cascadeOnDelete();
        
             $table->softDeletes();
             $table->timestamps();

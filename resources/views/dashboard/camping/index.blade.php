@@ -12,6 +12,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Number of Persons</th>
                 <th>Camp Days</th>
                 <th>Camp Image</th>
@@ -21,10 +22,11 @@
         <tbody>
             @foreach ($campings as $camping)
             <tr>
+                <td>{{ $camping->id }}</td>
                 <td>{{ $camping->number_of_persons }}</td>
                 <td>{{ $camping->camp_days }}</td>
                 <td>
-                    <img src="{{ asset($camping->Camp_img) }}" style="width: 50px; height: 50px;" alt="Camp Image"/>
+                    <img src="dash/{{ asset($camping->Camp_img) }}" style="width: 50px; height: 50px;" alt="Camp Image"/>
                 </td>
                 <td>
                    

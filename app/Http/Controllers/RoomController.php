@@ -8,10 +8,17 @@ use Illuminate\Http\Request;
 class RoomController extends Controller
 {
    
-    public function index()
+    public function index(Request $request)
     {
-        $rooms = Room::all();
-        return view('dashboard.room.index', compact('rooms'));
+        
+        $users_query = Room::query();
+        $search_param = $request->query('search');
+        if (!empty($search_param)) {
+            $users_query = Room::search($search_param);
+        }
+          $RoomFromDB = $users_query->get();
+        return view('dashboard.room.index', ['rooms'=>$RoomFromDB]);
+    
     }
     
 

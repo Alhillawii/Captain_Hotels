@@ -31,7 +31,7 @@ class User extends Authenticatable
 
     public function room()
     {
-        return $this->belongsTo(Room::class);
+        return $this->hasMany(Room::class);
     }
 
     public function supervisor()
@@ -44,10 +44,11 @@ class User extends Authenticatable
         return $this->belongsTo(Manager::class);
     }
 
-    // public function employee()
-    // {
-    //     return $this->hasOne(Employee::class);
-    // }
+    public function employee()
+    {
+        return $this->hasOne(Employee::class);  
+    }
+    
 
 
  
