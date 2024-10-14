@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,13 +21,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/', function () {
-    return view('dashboard.include.dash');
+Route::get('welcome', function () {
+    return view('welcome');
 });
 
 Route::get('/landpage', function () {
     return view('landing.layouts.app');
+});
+Route::get('/profileuser', function () {
+    return view('landing.profile.userprofile');
 });
 Route::get('/aboutus', function () {
     return view('landing.include.aboutus');
@@ -52,6 +55,9 @@ Route::resource('rooms', RoomController::class);
 Route::resource('contacts', ContactController::class);
 ///-------------------------------------------- Booking ---------------------------------////
 Route::resource('bookings', BookingController::class);
+///-------------------------------------------- profileuser ---------------------------------////
+Route::get('/profile', [UserProfileController::class, 'edit'])->name('profile.edit');
+Route::put('/profile', [UserProfileController::class, 'update'])->name('profile.update');
 
 
 
@@ -60,3 +66,12 @@ Route::resource('bookings', BookingController::class);
 
 
 
+
+
+Route::get('/', function () {
+    return view('dashboard.include.dash');
+})->middleware(['auth','Manager']);;
+
+Auth::routes();
+
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth']);

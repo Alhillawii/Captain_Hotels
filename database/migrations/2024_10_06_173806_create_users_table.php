@@ -16,13 +16,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('FullName');
+            $table->string('name');
             $table->enum('Gender', ['Male', 'Female']);
             $table->string('Address')->nullable();
             $table->string('Image')->nullable();
-            $table->string('mobile');
-            $table->string('Email')->unique();
-            $table->string('Password');
+            $table->string('mobile')->nullable();
+            $table->string('email')->unique();
+            $table->string('password');
             $table->integer('age')->nullable();
             $table->string('Role')->nullable();
             // $table->foreignIdFor(Room::class, 'room_id')->nullable()->constrained()->nullOnDelete();

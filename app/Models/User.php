@@ -13,21 +13,8 @@ class User extends Authenticatable
 {
     use HasFactory, SoftDeletes , Searchable;
 
-    protected $fillable = [
-       'FullName',
-        'Gender',
-         'Address',
-          'Image',
-           'mobile', 
-           'Email', 
-           'Password', 
-           'age', 
-           'Room_ID', 
-           'ID_Super',
-            'ID_Manager',
-            'Role',
-    
-    ];
+
+    protected $guarded = [];
 
     public function room()
     {
@@ -56,9 +43,9 @@ class User extends Authenticatable
     public function toSearchableArray()
     {
         return [
-            'FullName' =>$this->FullName,
+            'name' =>$this->name,
             'Gender' =>$this->Gender, 
-               'Email' =>$this->Email, 
+               'email' =>$this->email, 
                 'Role' =>$this->Role,
                 'Address' =>$this->Address,
         ];

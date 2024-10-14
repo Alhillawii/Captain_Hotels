@@ -26,10 +26,10 @@
             @foreach ($users as $user)
             <tr>
                 <td>{{ $user->id }}</td>
-                <td>{{ $user->FullName }}</td>
-                <td>{{ $user->Email }}</td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
                 <td>
-                    <img src="dash/{{asset($user->Image)}}" style="width: 50px; height:50px;" alt="Image"/>
+                    <img src="{{asset($user->Image)}}" style="width: 50px; height:50px;" alt="Image"/>
                 </td>
                 <td>{{ $user->Address }}</td>
                 <td>{{ $user->Gender }}</td>

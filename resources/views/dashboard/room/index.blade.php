@@ -31,7 +31,7 @@
                 <td>{{ $room->Rate }}</td>
                 <td>
                     @if ($room->Roomimage)
-                        <img src="dash/{{ asset($room->Roomimage) }}" style="width: 50px; height: 50px;" alt="Room Image"/>
+                        <img src="{{ asset($room->Roomimage) }}" style="width: 50px; height: 50px;" alt="Room Image"/>
                     @else
                         No image
                     @endif

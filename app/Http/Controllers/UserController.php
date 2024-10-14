@@ -33,20 +33,20 @@ class UserController extends Controller
     {
         //  return dd($request);
         $request->validate([
-            'FullName' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'Gender' => 'required|in:Male,Female',
             'Address' => 'nullable|string|max:255',
             'Image' => 'nullable|mimes:png,jpg,jpeg,webp',
             'mobile' => 'required|string|max:15',
-            'Email' => 'required|string|email|max:255|unique:users',
-            'Password' => 'required|string|min:8',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
             'age' => 'nullable|integer',
             'Role' => 'required|string',
         ]);
 
 
         if($request->has('Image')){
-           
+
             $file = $request->file('Image');
             $extension = $file->getClientOriginalExtension();
 
@@ -57,13 +57,13 @@ class UserController extends Controller
         }
 
         User::create([
-            'FullName' => $request->FullName,
+            'name' => $request->name,
             'Gender' => $request->Gender,
             'Address' => $request->Address,
             'Image' => $path.$filename,
             'mobile' => $request->mobile,
-            'Email' => $request->Email,
-            'Password' => bcrypt($request->Password),
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
             'age' => $request->age,
             'Role' => $request->Role,
         ]);
@@ -89,14 +89,14 @@ class UserController extends Controller
 
         
         $request->validate([
-            'FullName' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'Gender' => 'required|in:Male,Female',
             'Address' => 'nullable|string|max:255', 
             'Image' => 'nullable',
             'Image.*' => 'mimes:png,jpg,jpeg,webp',
             'mobile' => 'required|string|max:15',
-            'Email' => 'required|string|email|max:255|unique:users,Email,' . $user->id,
-            'Password' => 'nullable|string|min:8',
+            'email' => 'required|string|email|max:255|unique:users,Email,' . $user->id,
+            'password' => 'nullable|string|min:8',
             'age' => 'nullable|integer',
             'Role' => 'required'
         ]);
@@ -125,12 +125,12 @@ class UserController extends Controller
         
 
         $user->update([
-            'FullName' => $request->FullName,
+            'name' => $request->name,
             'Gender' => $request->Gender,
             'Address' => $request->Address,
             'mobile' => $request->mobile,
-            'Email' => $request->Email,
-            'Password' => $request->Password ? bcrypt($request->Password) : $user->Password,
+            'email' => $request->email,
+            'password' => $request->password ? bcrypt($request->password) : $user->password,
             'age' => $request->age,
             'Role' => $request->Role,
         ]);

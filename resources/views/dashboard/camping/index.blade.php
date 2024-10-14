@@ -26,7 +26,7 @@
                 <td>{{ $camping->number_of_persons }}</td>
                 <td>{{ $camping->camp_days }}</td>
                 <td>
-                    <img src="dash/{{ asset($camping->Camp_img) }}" style="width: 50px; height: 50px;" alt="Camp Image"/>
+                    <img src="{{ asset($camping->Camp_img) }}" style="width: 50px; height: 50px;" alt="Camp Image"/>
                 </td>
                 <td>
                    

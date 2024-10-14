@@ -26,6 +26,9 @@
     <link rel="stylesheet" href="{{asset('land/css/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset ('land/css/icomoon.css')}}">
     <link rel="stylesheet" href="{{asset('land/css/style.css')}}">
+
+    @yield('style')
+    
   </head>
   <body>
     

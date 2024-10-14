@@ -10,11 +10,11 @@
         <div class="card-body">
         <p><strong>Image:</strong></p>
 <img src="{{ asset($user->Image) }}" alt="User Image" style="max-width: 100px; max-height:100px;"/> 
-            <p><strong>Full Name:</strong> {{ $user->FullName }}</p>
+            <p><strong>Full Name:</strong> {{ $user->name }}</p>
             <p><strong>Gender:</strong> {{ $user->Gender }}</p>
             <p><strong>Address:</strong> {{ $user->Address }}</p>
             <p><strong>Mobile:</strong> {{ $user->mobile }}</p>
-            <p><strong>Email:</strong> {{ $user->Email }}</p>
+            <p><strong>Email:</strong> {{ $user->email }}</p>
             <p><strong>Age:</strong> {{ $user->age }}</p>
           <p><strong>Role:</strong> 
     @if ($user->Role == 'Supervisor')

@@ -7,8 +7,8 @@
     <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <label for="FullName">Full Name</label>
-            <input type="text" name="FullName" class="form-control" required>
+            <label for="name">Full Name</label>
+            <input type="text" name="name" class="form-control" required>
         </div>
         <div class="form-group">
             <label for="Gender">Gender</label>
@@ -30,12 +30,12 @@
             <input type="text" name="mobile" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="Email">Email</label>
-            <input type="email" name="Email" class="form-control" required>
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="Password">Password</label>
-            <input type="password" name="Password" class="form-control" required>
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" required>
         </div>
         <div class="form-group">
             <label for="age">Age</label>

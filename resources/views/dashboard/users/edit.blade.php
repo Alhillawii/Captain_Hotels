@@ -9,8 +9,8 @@
         @csrf
         @method('PUT')
         <div class="form-group">
-            <label for="FullName">Full Name</label>
-            <input type="text" name="FullName" class="form-control" value="{{ $user->FullName }}" required>
+            <label for="name">Full Name</label>
+            <input type="text" name="name" class="form-control" value="{{ $user->name }}" required>
         </div>
         <div class="form-group">
             <label for="Gender">Gender</label>
@@ -35,12 +35,12 @@
             <input type="text" name="mobile" class="form-control" value="{{ $user->mobile }}" required>
         </div>
         <div class="form-group">
-            <label for="Email">Email</label>
-            <input type="email" name="Email" class="form-control" value="{{ $user->Email }}" required>
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" value="{{ $user->email }}" required>
         </div>
         <div class="form-group">
-            <label for="Password">Password</label>
-            <input type="password" name="Password" class="form-control" placeholder="Leave blank to keep current password">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Leave blank to keep current password">
         </div>
         <div class="form-group">
             <label for="age">Age</label>
