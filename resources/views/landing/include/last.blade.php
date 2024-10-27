@@ -8,6 +8,7 @@
   <script src="land/js/jquery.stellar.min.js"></script>
   <script src="land/js/owl.carousel.min.js"></script>
   <script src="land/js/jquery.magnific-popup.min.js"></script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
   <script src="land/js/aos.js"></script>
   <script src="land/js/jquery.animateNumber.min.js"></script>
   <script src="land/js/bootstrap-datepicker.js"></script>

@@ -66,11 +66,7 @@
                 selected
                 @endif
                 >Manager</option>
-                <option value="Employee" 
-                @if($user->Role == "Employee") 
-                selected
-                @endif
-                >Employee</option>
+               
 
             </select>
         </div>

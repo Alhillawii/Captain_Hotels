@@ -9,7 +9,7 @@
             <label for="user_id">User</label>
             <select name="user_id" class="form-control" required>
                 @foreach ($users as $user)
-                <option value="{{ $user->id }}">{{ $user->FullName }}</option>
+                    <option value="{{ $user->id }}">{{ $user->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -17,7 +17,7 @@
             <label for="room_id">Room</label>
             <select name="room_id" class="form-control" required>
                 @foreach ($rooms as $room)
-                <option value="{{ $room->id }}">{{ $room->name }}</option>
+                    <option value="{{ $room->id }}">{{ $room->Roomtype }}</option>
                 @endforeach
             </select>
         </div>
@@ -41,5 +41,5 @@
         <button type="submit" class="btn btn-primary border-0" style="background-color: #16325B;">Submit</button>
         <a href="{{ route('bookings.index') }}" class="btn btn-secondary">Back</a>
     </form>
-</div> 
-@endsection 
+</div>
+@endsection

@@ -31,10 +31,7 @@ class User extends Authenticatable
         return $this->belongsTo(Manager::class);
     }
 
-    public function employee()
-    {
-        return $this->hasOne(Employee::class);  
-    }
+  
     
 
 

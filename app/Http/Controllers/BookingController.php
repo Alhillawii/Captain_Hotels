@@ -28,7 +28,7 @@ class BookingController extends Controller
         $users = User::all();
         $rooms = Room::all();
     
-        return view('dashboard.booking.create' , compact('users', 'rooms'));
+        return view('dashboard.booking.create' , compact('users' , 'rooms'));
     }
 
     public function store(Request $request)
@@ -42,10 +42,10 @@ class BookingController extends Controller
             'payment_method' => 'required|string|max:255',
             'room_id' => 'nullable|exists:rooms,id',
             'camping_id' => 'nullable|exists:campings,id',
-            'user_id' => 'required|exists:users,id', // Ensure the user exists
-            'room_id' => 'required|exists:rooms,id', // Ensure the room exists
-            'check_in' => 'required|date', // Valid date format
-            'check_out' => 'required|date|after:check_in', // Check that check-out is after check-in
+            'user_id' => 'required|exists:users,id',
+            'room_id' => 'required|exists:rooms,id',
+            'check_in' => 'required|date', 
+            'check_out' => 'required|date|after:check_in', 
     
         ]);
 

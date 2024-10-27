@@ -31,7 +31,7 @@ Route::get('/landpage', function () {
 Route::get('/profileuser', function () {
     return view('landing.profile.userprofile');
 });
-Route::get('/aboutus', function () {
+Route::get('/camping', function () {
     return view('landing.include.aboutus');
 });
 Route::get('/viewroom', function () {
@@ -45,8 +45,6 @@ Route::get('/rest', function () {
 });
 ///-------------------------------------------- users ---------------------------------////
 Route::resource('users', UserController::class);
-///-------------------------------------------- employee ---------------------------------////
-Route::resource('employees', EmployeeController::class);
 ///-------------------------------------------- Camping ---------------------------------////
 Route::resource('campings', CampingController::class);
 ///-------------------------------------------- Rooms ---------------------------------////

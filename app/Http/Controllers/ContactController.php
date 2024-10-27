@@ -31,6 +31,22 @@ class ContactController extends Controller
         return view('dashboard.contact.show', compact('contact')); 
     }
 
+    public function store(Request $request)
+    {
+        
+        $request->validate([
+            'Name' => 'required|string|max:255',
+            'Email' => 'required|email',
+            'Message' => 'required|string|max:255',
+            'Description' => 'required|string',
+        ]);
+
+       
+        Contact::create($request->all());
+
+       
+        return redirect()->back()->with('success', 'Your message has been sent successfully!');
+    }
     
     public function destroy($id)
     {

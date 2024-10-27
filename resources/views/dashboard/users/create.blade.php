@@ -48,7 +48,6 @@
                 <option value="Supervisor">Supervisor</option>
                 <option value="User">User</option>
                 <option value="Manager">Manager</option>
-                <option value="Employee">Employee</option>
                 
             </select>
         </div>

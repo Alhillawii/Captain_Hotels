@@ -40,8 +40,6 @@
                     <span class="badge rounded-pill bg-primary me-1">User</span>
                     @elseif ($user->Role == 'Manager')
                     <span class="badge rounded-pill bg-warning me-1">Manager</span>
-                    @elseif ($user->Role == 'Employee')
-                    <span class="badge rounded-pill bg-dark me-1">Employee</span>
                     @endif
                 </td>
 

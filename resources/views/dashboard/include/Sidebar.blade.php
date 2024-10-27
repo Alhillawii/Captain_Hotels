@@ -18,10 +18,6 @@
             <a href="{{ route('users.index') }}" class="nav-item nav-link {{ Request::is('users') ? 'active' : '' }}" style="color: #16325B;">
                 <i class="fa fa-th me-2" style="color: #16325B;"></i>Users
             </a>
-            <a href="{{ route('employees.index') }}" class="nav-item nav-link {{ Request::is('employees') ? 'active' : '' }}" style="color: #16325B;">
-    <i class="fa fa-keyboard me-2" style="color: #16325B;"></i>Employee
-</a>
-
             <a href="{{ route('campings.index') }}" class="nav-item nav-link {{ Request::is('campings') ? 'active' : '' }}" style="color: #16325B;">
             <i class="fa fa-campground me-2" style="color: #16325B;"></i>Camping
             </a>

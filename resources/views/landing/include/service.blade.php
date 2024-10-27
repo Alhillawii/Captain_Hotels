@@ -10,7 +10,7 @@
               </div>
               <div class="media-body p-2 mt-2">
                 <h3 class="heading mb-3">25/7 Front Desk</h3>
-                <p>A small river named Duden flows by their place and supplies.</p>
+                <p>Good treatment and great service</p>
               </div>
             </div>      
           </div>
@@ -22,8 +22,8 @@
               	</div>
               </div>
               <div class="media-body p-2 mt-2">
-                <h3 class="heading mb-3">Restaurant Bar</h3>
-                <p>A small river named Duden flows by their place and supplies.</p>
+                <h3 class="heading mb-3">Restaurant & Cafe</h3>
+                <p>AIt is famous for its seafood.</p>
               </div>
             </div>    
           </div>
@@ -35,8 +35,8 @@
               	</div>
               </div>
               <div class="media-body p-2 mt-2">
-                <h3 class="heading mb-3">Transfer Services</h3>
-                <p>A small river named Duden flows by their place and supplies.</p>
+                <h3 class="heading mb-3">Meeting room</h3>
+                <p>You can inquire about it for events or meetings.</p>
               </div>
             </div>      
           </div>
@@ -48,8 +48,9 @@
               	</div>
               </div>
               <div class="media-body p-2 mt-2">
-                <h3 class="heading mb-3">Spa Suites</h3>
-                <p>A small river named Duden flows by their place and supplies.</p>
+                <h3 class="heading mb-3">Spa & Naile
+                </h3>
+                <p>The reservation is included and you can enjoy it.</p>
               </div>
             </div>      
           </div>
