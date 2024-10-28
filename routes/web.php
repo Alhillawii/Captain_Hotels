@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OurroomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,8 @@ Route::resource('bookings', BookingController::class);
 ///-------------------------------------------- profileuser ---------------------------------////
 Route::get('/profile', [UserProfileController::class, 'edit'])->name('profile.edit');
 Route::put('/profile', [UserProfileController::class, 'update'])->name('profile.update');
+
+Route::get('/rooms', [OurroomController::class, 'index'])->name('rooms.index');
 
 
 

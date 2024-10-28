@@ -57,7 +57,96 @@ even when they were far from it.
           </div>
         </div>
 		
-    <img class="card-img-top" src="{{asset('land/images/DSC04787.jpg')}}" alt="Card image">
+		<div class="book">
+<input type="checkbox" id="c0">
+  <input type="checkbox" id="c1">
+  <input type="checkbox" id="c2">
+  <input type="checkbox" id="c3">
+  <input type="checkbox" id="c4">
+  <input type="checkbox" id="c5">
+  <input type="checkbox" id="c6">
+  <input type="checkbox" id="c7">
+  <input type="checkbox" id="c8">
+  <input type="checkbox" id="c9">
+  <input type="checkbox" id="c10">
+  <input type="checkbox" id="c11">
+  <input type="checkbox" id="c12">
+  <div id="cover" style="background-color: white;"></div>
+  <div class="flip-book">
+    <div class="flip" id="p0">
+      <div class="back">
+        <img src="{{asset('land/images/menu1.png')}}" alt="menu">
+        <label class="back-btn" for="c0">Back</label>
+      </div>
+      <div class="front" id="acde">
+        <img src="{{asset('land/images/menu12.png')}}" alt="menu">
+		<label class="next-btn" for="c0">Next</label>
+      </div>
+    </div>
+    <div class="flip" id="p1">
+      <div class="back">
+        <img src="{{asset('land/images/menu2.png')}}">
+        <label class="back-btn" for="c1">Back</label>
+      </div>
+      <div class="front">
+	  <img src="{{asset('land/images/menu3.png')}}">
+        <label class="next-btn" for="c1">Next</label>
+      </div>
+    </div>
+
+    <div class="flip" id="p2">
+      <div class="back">
+	  <img src="{{asset('land/images/menu4.png')}}">
+        <label class="back-btn" for="c2">Back</label>
+      </div>
+      <div class="front">
+	  <img src="{{asset('land/images/menu5.png')}}">
+        <label class="next-btn" for="c2">Next</label>
+      </div>
+    </div>
+
+    <div class="flip" id="p3">
+      <div class="back">
+	  <img src="{{asset('land/images/menu66.png')}}">
+        <label class="back-btn" for="c3">Back</label>
+      </div>
+      <div class="front">
+	  <img src="{{asset('land/images/menu7.png')}}">
+        <label class="next-btn" for="c3">Next</label>
+      </div>
+    </div>
+
+    <div class="flip" id="p4">
+      <div class="back">
+	  <img src="{{asset('land/images/menu8.png')}}">
+        <label class="back-btn" for="c4">Back</label>
+      </div>
+      <div class="front">
+	  <img src="{{asset('land/images/menu9.png')}}">
+        <label class="next-btn" for="c4">Next</label>
+      </div>
+    </div>
+
+    <div class="flip" id="p5">
+      <div class="back">
+	  <img src="{{asset('land/images/menu10.png')}}">
+        <label class="back-btn" for="c5">Back</label>
+      </div>
+      <div class="front">
+	  <img src="{{asset('land/images/menu11.png')}}">
+        <label class="next-btn" for="c5">Next</label>
+      </div>
+    </div>
+
+    
+      
+   
+
+   
+
+   
+  </div>
+</div>
    
  
 </div>

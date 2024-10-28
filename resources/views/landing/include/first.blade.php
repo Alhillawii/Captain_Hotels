@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="{{asset ('land/css/open-iconic-bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset ('land/css/animate.css')}}">
+    <link rel="stylesheet" href="{{asset ('land/css/login.css')}}">
+    <link rel="stylesheet" href="{{asset ('land/css/menu.css')}}">
     
     <link rel="stylesheet" href="{{asset('land/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset ('land/css/owl.theme.default.min.css')}}">

@@ -1,5 +1,6 @@
 
 <script src="land/js/jquery.min.js"></script>
+<script src="land/js/login.js"></script>
   <script src="land/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="land/js/popper.min.js"></script>
   <script src="land/js/bootstrap.min.js"></script>
