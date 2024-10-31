@@ -26,20 +26,18 @@ Route::get('welcome', function () {
     return view('welcome');
 });
 
-Route::get('/landpage', function () {
-    return view('landing.layouts.app');
-});
+Route::get('/landpage',  [OurroomController::class, 'index'])->name('roomss.index');
 Route::get('/profileuser', function () {
     return view('landing.profile.userprofile');
 });
 Route::get('/camping', function () {
     return view('landing.include.aboutus');
 });
-Route::get('/viewroom', function () {
-    return view('landing.include.viewroom');
-});
+Route::get('/viewroom/{id}', [RoomController::class, 'show'])->name('viewroom');
+
+
 Route::get('/contact', function () {
-    return view('landing.include.contact');
+    return view('landing.include.contact'); 
 });
 Route::get('/rest', function () {
     return view('landing.include.restaurant');
@@ -56,9 +54,9 @@ Route::resource('contacts', ContactController::class);
 Route::resource('bookings', BookingController::class);
 ///-------------------------------------------- profileuser ---------------------------------////
 Route::get('/profile', [UserProfileController::class, 'edit'])->name('profile.edit');
-Route::put('/profile', [UserProfileController::class, 'update'])->name('profile.update');
+Route::put('/profile/{user}', [UserProfileController::class, 'update'])->name('profile.update');
 
-Route::get('/rooms', [OurroomController::class, 'index'])->name('rooms.index');
+
 
 
 

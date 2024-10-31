@@ -19,42 +19,33 @@ $user=User::findOrFail(Auth::id())  ;
 
     public function update(Request $request, User $user)
     {
-
-        
         $request->validate([
             'name' => 'required|string|max:255',
             'gender' => 'required|in:Male,Female',
             'address' => 'nullable|string|max:255',
-            'image' => 'nullable|mimes:png,jpg,jpeg,webp',
             'mobile' => 'required|string|max:15',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:8|confirmed',
+            'Image' => 'nullable|mimes:png,jpg,jpeg,webp',
         ]);
-        
-
-        // dd($request);
-
-        if($request->has('Image')){
-           
+    
+        // Handle image upload
+        if ($request->hasFile('Image')) {
             $file = $request->file('Image');
             $extension = $file->getClientOriginalExtension();
-
-            $filename = time().'.'.$extension;
-
+            $filename = time() . '.' . $extension;
             $path = 'uploads/Image/';
-            $file->move($path, $filename);
-
-            // if(File::exists(path: $user->Image)){
-            //     File::delete($user->Image);
-
-            // }
+            $file->move(public_path($path), $filename);
+    
+            // Delete old image
+            if (File::exists(public_path($user->Image))) {
+                File::delete(public_path($user->Image));
+            }
+    
+            $user->update(['Image' => $path . $filename]);
         }
-
-        // return dd($path);
-         
-
-        
-
+    
+        // Update other fields
         $user->update([
             'name' => $request->name,
             'gender' => $request->gender,
@@ -63,17 +54,8 @@ $user=User::findOrFail(Auth::id())  ;
             'email' => $request->email,
             'password' => $request->password ? bcrypt($request->password) : $user->password,
         ]);
-
-        if (
-           isset($path)) {
-          $user->update([
-            'Image' => $path.$filename,
-          ]);
-        }
-
-       
-
-        return redirect()->route('profileuser')->with('success', 'User updated successfully.');
+    
+        return redirect()->route('profile.edit')->with('success', 'User updated successfully.');
     }
-
+    
 }

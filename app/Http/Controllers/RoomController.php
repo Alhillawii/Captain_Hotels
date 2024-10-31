@@ -22,6 +22,8 @@ class RoomController extends Controller
     }
     
 
+
+
    
     public function create()
     {
@@ -71,6 +73,11 @@ class RoomController extends Controller
     return view('dashboard.room.show', compact('room'));
 }
 
+public function show_userside($id)
+{
+    $room = Room::findOrFail($id);
+    return view('landing.include.viewroom', compact('room'));
+}
 
 public function edit(Room $room)
 {

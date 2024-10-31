@@ -16,6 +16,8 @@
                     <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
                 @endif
                 <span class="font-weight-bold">{{ $user->name }}</span>
+                <span class="font-weight-bold">{{ $user->Address }}</span>
+                <span class="font-weight-bold">{{ $user->mobile }}</span>
                 <span class="text-black-50">{{ $user->email }}</span>
                 <span></span>
             </div>
@@ -25,13 +27,14 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
-                <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
+                <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+
+                @csrf
+                @method('PUT')
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <label class="labels">Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="first name" value="{{ $user->name }}">
+                            <input type="text" class="form-control" name="name" placeholder="name" value="{{ $user->name }}">
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -53,12 +56,17 @@
                         </div>
                         <div class="col-md-12">
                             <label class="labels">Confirm Password</label>
-                            <input type="text" class="form-control" name="password_confirmation" placeholder="password_confirmation">
+                            <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
+
                         </div>
                     </div>
                     <div class="mt-3">
                         <label class="labels">Profile Image</label>
                         <input type="file" class="form-control" name="Image">
+                    </div>
+                    <div class="mt-3">
+                        <label class="labels">gender</label>
+                        <input type="text" class="form-control" name="gender">
                     </div>
                     <div class="mt-5 text-center">
                         <button class="btn btn-primary profile-button" type="submit">Save Profile</button>

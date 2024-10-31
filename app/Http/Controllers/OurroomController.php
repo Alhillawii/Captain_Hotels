@@ -11,8 +11,9 @@ class OurroomController extends Controller
     {
         
         $rooms = Room::all();
+        // @dd($rooms);
       
         
-    return view('landing.include.viewroom', ['rooms' =>$rooms]); // Pass the data to the view
+    return view('landing.layoutss.app', ['rooms' =>$rooms]); 
     }
 }
