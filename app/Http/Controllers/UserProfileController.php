@@ -1,24 +1,26 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+
 class UserProfileController extends Controller
 {
-    public function edit(User $user)
+    public function edit()
     {
-$user=User::findOrFail(Auth::id())  ;
-
+        $user = Auth::user();
         return view('landing.profile.userprofile', compact('user'));
     }
 
-  
-
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
+        $user = Auth::user();
+
         $request->validate([
             'name' => 'required|string|max:255',
             'gender' => 'required|in:Male,Female',
@@ -26,36 +28,27 @@ $user=User::findOrFail(Auth::id())  ;
             'mobile' => 'required|string|max:15',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:8|confirmed',
-            'Image' => 'nullable|mimes:png,jpg,jpeg,webp',
+            'Image' => 'nullable|mimes:png,jpg,jpeg,webp|max:2048',
         ]);
-    
-        // Handle image upload
-        if ($request->hasFile('Image')) {
-            $file = $request->file('Image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $path = 'uploads/Image/';
-            $file->move(public_path($path), $filename);
-    
-            // Delete old image
-            if (File::exists(public_path($user->Image))) {
-                File::delete(public_path($user->Image));
-            }
-    
-            $user->update(['Image' => $path . $filename]);
+
+        $user->name = $request->input('name');
+        $user->gender = $request->input('gender');
+        $user->address = $request->input('address');
+        $user->mobile = $request->input('mobile');
+        $user->email = $request->input('email');
+
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->input('password'));
         }
-    
-        // Update other fields
-        $user->update([
-            'name' => $request->name,
-            'gender' => $request->gender,
-            'address' => $request->address,
-            'mobile' => $request->mobile,
-            'email' => $request->email,
-            'password' => $request->password ? bcrypt($request->password) : $user->password,
-        ]);
-    
+
+        if ($request->hasFile('Image')) {
+            // Handle file upload
+            $path = $request->file('Image')->store('uploads/Image', 'public');
+            $user->Image = 'storage/' . $path; // Store the relative path
+        }
+
+        $user->save(); // Save the updated user model
+
         return redirect()->route('profile.edit')->with('success', 'User updated successfully.');
     }
-    
 }

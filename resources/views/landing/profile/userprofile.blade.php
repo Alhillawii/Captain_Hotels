@@ -1,80 +1,72 @@
-@extends('landing.include.first') 
+@extends('landing.include.first')
 
 @section('style')
 <link rel="stylesheet" href="{{ asset('land/css/user.css') }}">
 @endsection
 
-@include('landing.include.nav') 
-
-<div class="container rounded mt-5 mb-5">
+<div class="container-xl px-4 mt-4">
+   
+    <hr class="mt-0 mb-4">
     <div class="row">
-        <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                @if($user->Image)
-                    <img class="rounded-circle mt-5" width="150px" src="{{ asset($user->Image) }}">
-                @else
-                    <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                @endif
-                <span class="font-weight-bold">{{ $user->name }}</span>
-                <span class="font-weight-bold">{{ $user->Address }}</span>
-                <span class="font-weight-bold">{{ $user->mobile }}</span>
-                <span class="text-black-50">{{ $user->email }}</span>
-                <span></span>
-            </div>
-        </div>
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Settings</h4>
+        <div class="col-xl-4">
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-header">Profile Picture</div>
+                <div class="card-body text-center">
+                    @if($user->Image)
+                        <img src="{{ asset($user->Image) }}" alt="Profile Image">
+                    @else
+                        <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Default Image">
+                    @endif
+                    <span class="font-weight-bold">{{ $user->name }}</span>
+                    <br>
+                        <span class="font-weight-bold">{{ $user->ddress }}</span>
+                        <br>
+                        <span class="font-weight-bold">{{ $user->mobile }}</span>
+                        <br>
+
+                        <span class="text-black-50">{{ $user->email }}</span>
                 </div>
-                <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
-
-                @csrf
-                @method('PUT')
-                    <div class="row mt-2">
-                        <div class="col-md-6">
-                            <label class="labels">Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="name" value="{{ $user->name }}">
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-12">
-                            <label class="labels">Mobile Number</label>
-                            <input type="text" class="form-control" name="mobile" placeholder="enter phone number" value="{{ $user->mobile }}">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Address</label>
-                            <input type="text" class="form-control" name="Address" placeholder="enter address" value="{{ $user->Address }}">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Email ID</label>
-                            <input type="text" class="form-control" name="email" placeholder="enter email id" value="{{ $user->email }}">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Email ID</label>
-                            <input type="text" class="form-control" name="password" placeholder="password">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Confirm Password</label>
-                            <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
-
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                        <label class="labels">Profile Image</label>
-                        <input type="file" class="form-control" name="Image">
-                    </div>
-                    <div class="mt-3">
-                        <label class="labels">gender</label>
-                        <input type="text" class="form-control" name="gender">
-                    </div>
-                    <div class="mt-5 text-center">
-                        <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
-                    </div>
-                </form>
             </div>
         </div>
-      
+        <div class="col-xl-8">
+            <div class="card mb-4">
+                <div class="card-header">Account Details</div>
+                <div class="card-body">
+                <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
+ 
+
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputUsername">Your Name</label>
+                            <input class="form-control" id="inputUsername" name="name" type="text" placeholder="Enter your name" value="{{ $user->name }}" required>
+                        </div>
+                       
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                            <input class="form-control" id="inputEmailAddress" name="email" type="email" placeholder="Enter your email address" value="{{ $user->email }}" required>
+                        </div>
+
+                        <div class="row gx-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputPhone">Phone number</label>
+                                <input class="form-control" id="inputPhone" name="mobile" type="text" placeholder="Enter your phone number" value="{{ $user->mobile }}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputPassword">Confirm Password</label>
+                                <input class="form-control" id="inputPassword" name="password_confirmation" type="password" placeholder="Confirm Password">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputImage">Upload New Image</label>
+                            <input class="form-control" id="inputImage" name="Image" type="file" accept=".png,.jpg,.jpeg,.webp">
+                        </div>
+
+                        <button class="btn" style="background-color: #16325B; color: white;" type="submit">Save changes</button>
+                        <a href="{{ url('/landpage') }}" class="btn btn-secondary">Back</a>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

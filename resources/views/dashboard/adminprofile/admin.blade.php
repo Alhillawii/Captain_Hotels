@@ -1,80 +1,66 @@
-@extends('layouts.app')
-
+@extends('dashboard.layout.master')
+@section('title','Admin Profile')
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <!-- Sidebar -->
-        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-            <div class="position-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url('/userprofile') }}">
-                            <i class="fas fa-user"></i> My Profile
-                        </a>
-                    </li>
-                    <!-- You can add more navigation items here -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/userrentals') }}">
-                            <i class="fas fa-car"></i> User Car
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <div class="text-left">
+        <button class="btn ">
+            <a href="{{ route('dashboard') }}" class="btn btn-primary p-2 float-start">Back to List</a>
+        </button>
+    </div>
+    <div class="card mb-6">
+        <!-- Account -->
 
-        <!-- Main content -->
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">{{ $User->FullName }}'s Profile</h1> <!-- Using FullName -->
+        <div class="card-body">
+            <div class="d-flex align-items-start align-items-sm-center gap-6">
+                <img src="{{asset(Auth::user()->image)}}" alt="user-avatar" class="d-block w-px-100 h-px-100 rounded" id="uploadedAvatar">
             </div>
-
-            @if (session('success'))
-                <div class="alert alert-success">
+        </div>
+        <div class="card-body pt-0">
+            <!-- Show success alert if session has a success message -->
+            @if(session('success'))
+                <div class="alert alert-success" role="alert">
                     {{ session('success') }}
                 </div>
             @endif
 
-            <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+            <form id="formAccountSettings" method="POST" action="{{route('dashboard.admin.update',Auth::user()->id)}}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+                <div class="row mt-1 g-5">
+                    <div class="col-md-6">
+                        <div class="form-floating form-floating-outline">
+                            <input class="form-control" type="text" id="firstName" name="name" value="{{Auth::user()->name}}" autofocus="">
+                            <label for="firstName"> Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating form-floating-outline">
+                            <input class="form-control" type="text" id="email" name="email" value="{{Auth::user()->email}}" placeholder="john.doe@example.com">
+                            <label for="email">E-mail</label>
+                        </div>
+                    </div>
 
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ $User->FullName }}" required> <!-- Using FullName -->
+                    <div class="col-md-6">
+                        <div class="input-group input-group-merge">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" id="phoneNumber" name="mobile" class="form-control" value="{{Auth::user()->mobile}}" placeholder="202 555 0111">
+                                <label for="phoneNumber">Phone Number</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating form-floating-outline">
+                            <input type="file" id="profileImage" name="image" class="form-control">
+                            <label for="profileImage">Change Profile Image</label>
+                        </div>
+                    </div>
                 </div>
-
-                <br>
-
-                <!-- File input for uploading new image -->
-                <div class="form-floating form-floating-outline mb-6">
-                    <input type="file" name="image" class="form-control" id="image">
-                    <label for="image" class="form-label">Upload new image</label>
+                <div class="mt-6">
+                    <button type="submit" class="btn btn-primary me-3 waves-effect waves-light">Save changes</button>
                 </div>
-
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" value="{{ old('email', $User->Email) }}" required>
-                    @error('email')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password (leave blank to keep current password)</label>
-                    <input type="password" name="password" class="form-control">
-                    @error('password')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="password_confirmation" class="form-label">Confirm Password</label>
-                    <input type="password" name="password_confirmation" class="form-control">
-                </div>
-
-                <button type="submit" class="btn btn-primary">Update Profile</button>
             </form>
-        </main>
+        </div>
+        <!-- /Account -->
     </div>
-</div>
+
 @endsection

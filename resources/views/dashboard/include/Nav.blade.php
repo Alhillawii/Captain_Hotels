@@ -68,12 +68,11 @@
         </div>
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: #16325B;">
-                <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                <span class="d-none d-lg-inline-flex">John Doe</span>
+                <img class="rounded-circle me-lg-2" src="{{asset(Auth::user()->Image)}}" alt="" style="width: 40px; height: 40px;">
+                <span class="d-none d-lg-inline-flex">{{Auth::user()->name}}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                <a href="#" class="dropdown-item" style="color: #16325B;">My Profile</a>
-                <a href="#" class="dropdown-item" style="color: #16325B;">Settings</a>
+                <a href="{{ route('profile.edit') }}" class="dropdown-item" style="color: #16325B;">My Profile</a>
                 <a class="dropdown-item" href="{{ route('logout') }}" 
    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
     {{ __('Logout') }}

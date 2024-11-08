@@ -27,12 +27,14 @@ Route::get('welcome', function () {
 });
 
 Route::get('/landpage',  [OurroomController::class, 'index'])->name('roomss.index');
+Route::get('/landpage1',  [OurroomController::class, 'show'])->name('roomss.show');
 Route::get('/profileuser', function () {
     return view('landing.profile.userprofile');
 });
 Route::get('/camping', function () {
     return view('landing.include.aboutus');
 });
+
 Route::get('/viewroom/{id}', [RoomController::class, 'show'])->name('viewroom');
 
 
@@ -53,8 +55,13 @@ Route::resource('contacts', ContactController::class);
 ///-------------------------------------------- Booking ---------------------------------////
 Route::resource('bookings', BookingController::class);
 ///-------------------------------------------- profileuser ---------------------------------////
-Route::get('/profile', [UserProfileController::class, 'edit'])->name('profile.edit');
-Route::put('/profile/{user}', [UserProfileController::class, 'update'])->name('profile.update');
+
+
+Route::get('/profile/edit', [UserProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/profile/update', [UserProfileController::class, 'update'])->name('profile.update');
+
+
+
 
 
 
