@@ -35,7 +35,7 @@
                             </div>
                             <div class="ms-3">
                                 <p class="mb-0">Rooms</p>
-                                <h5 class="mb-0">{{ $rooms->count() }}</h5>
+                                <h5 class="mb-0">{{ $room->count() }}</h5>
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,6 @@
                                     <i class="ri-money-dollar-circle-line ri-24px"></i>
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -130,9 +129,6 @@
                 </div>
             </div>
             <!--/ Total Testimonials -->
-         
-            
-            <!--/ Total Cars -->
         </div>
     </div>
     <!--/ Quick Stats Cards -->

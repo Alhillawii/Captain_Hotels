@@ -53,9 +53,10 @@
                             <p><span class="price mr-2">${{ $room->price }}</span> <span class="per">per night</span></p>
                             <hr>
                             <p class="pt-1">
-                                <a href="{{ route('roomss.index' , $room->id) }}" class="btn-custom">
+                                <!-- <a href="{{ 'viewroom' , $room->id}}" class="btn-custom">
                                     View Room Details <span class="icon-long-arrow-right"></span>
-                                </a>
+                                </a> -->
+                                <a href="{{ route('rooms.render', $room->id) }}" class="">Read More <i class="fa fa-arrow-right"></i></a>
                             </p>
                         </div>
                     </div>

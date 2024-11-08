@@ -3,6 +3,8 @@
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CampingController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashvoardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
@@ -10,6 +12,7 @@ use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OurroomController;
+use App\Http\Controllers\RoomRenderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +37,13 @@ Route::get('/profileuser', function () {
 Route::get('/camping', function () {
     return view('landing.include.aboutus');
 });
+// Route::get('/viewroom', function () {
+//     return view('landing.include.viewroom');
+// });
 
-Route::get('/viewroom/{id}', [RoomController::class, 'show'])->name('viewroom');
+Route::get('/room/{id}' , [RoomRenderController::class, 'show'])->name('rooms.render');
+
+// Route::get('/viewroom/{id}', [RoomController::class, 'show'])->name('viewroom');
 
 
 Route::get('/contact', function () {
@@ -59,6 +67,9 @@ Route::resource('bookings', BookingController::class);
 
 Route::get('/profile/edit', [UserProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/update', [UserProfileController::class, 'update'])->name('profile.update');
+
+Route::get('/dashboard', [DashvoardController::class, 'dashboard'])->name('dashboard');
+
 
 
 
