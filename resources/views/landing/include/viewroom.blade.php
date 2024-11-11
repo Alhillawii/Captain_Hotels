@@ -20,11 +20,9 @@
             <div class="col-lg-8">
                 <h2 class="mb-4">{{ $room->description }}</h2>
                 <div class="single-slider owl-carousel">
-                    @foreach($room->Roomimage as $image)
-                        <div class="item">
-                            <div class="room-img" style="background-image: url({{ asset('storage/' . $image->path) }});"></div>
+                    <div class="item">
+                            <div class="room-img" style="background-image: url({{ asset($room->Roomimage) }});"></div>
                         </div>
-                    @endforeach
                 </div>
                 <div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
                     <p>{{ $room->description }}</p>

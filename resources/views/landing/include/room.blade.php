@@ -1,38 +1,44 @@
-<section class="ftco-section bg-light">
+@include('landing.include.first')
+@include('landing.include.nav')
+
+<div class="hero-wrap" style="background-image: url('land/images/bg_1.jpg');">
+    <div class="overlay"></div>
     <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
-            <div class="col-md-7 heading-section text-center ftco-animate">
-                <h2 class="mb-4">Our Rooms</h2>
+        <div class="row no-gutters slider-text d-flex align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                <div class="text">
+                    <h1 class="mb-4 bread">{{ $room->Roomtype ?? 'Room Type' }}</h1>
+                </div>
             </div>
-        </div>    		
-        <div class="row">
-            
-                @foreach($rooms as $room)
-                    <div class="col-sm col-md-6 col-lg-4 ftco-animate">
-                        <div class="room">
-                            <a href="{{ url('room-single/' . $room->id) }}" 
-                               class="img d-flex justify-content-center align-items-center" 
-                               style="background-image: url('{{ asset('storage/' . $room->Roomimage) }}');">
-                                <div class="icon d-flex justify-content-center align-items-center">
-                                    <span class="icon-search2"></span>
-                                </div>
-                            </a>
-                            <div class="text p-3 text-center">
-                                <h3 class="mb-3">
-                                    <a href="{{ url('room-single/' . $room->id) }}">{{ $room->Roomtype }}</a>
-                                </h3>
-                                <p><span class="price mr-2">${{ $room->price }}</span> <span class="per">per night</span></p>
-                                <hr>
-                                <p class="pt-1">
-                                    <a href="{{ url('room-single/' . $room->id) }}" class="btn-custom">
-                                        View Room Details <span class="icon-long-arrow-right"></span>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-             
         </div>
     </div>
-	@endforeach
+</div>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="mb-4">{{ $room->description ?? 'Room description not available.' }}</h2>
+                <div class="single-slider owl-carousel">
+                    @if(!empty($room->Roomimage))
+                        @foreach($room->Roomimage as $image)
+                            <div class="item">
+                                <div class="room-img" style="background-image: url({{ asset('storage/' . $image->path) }});"></div>
+                            </div>
+                        @endforeach
+                    @else
+                        <p>No images available for this room.</p>
+                    @endif
+                </div>
+                <div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
+                    <p>{{ $room->description ?? 'Room description not available.' }}</p>
+                    <ul class="list">
+                        <li><span>Price:</span> ${{ $room->price ?? 'N/A' }}</li>
+                        <li><span>Status:</span> {{ $room->status ?? 'N/A' }}</li>
+                        <li><span>Rate:</span> {{ $room->Rate ?? 'N/A' }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

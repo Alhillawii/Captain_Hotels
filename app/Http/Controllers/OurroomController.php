@@ -11,7 +11,7 @@ class OurroomController extends Controller
     {
         
         $rooms = Room::all();
-        // @dd($rooms);
+        
       
         
     return view('landing.layoutss.app', ['rooms' =>$rooms]); 

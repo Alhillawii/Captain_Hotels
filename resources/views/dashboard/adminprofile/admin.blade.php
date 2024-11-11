@@ -1,66 +1,150 @@
-@extends('dashboard.layout.master')
-@section('title','Admin Profile')
-@section('content')
-    <div class="text-left">
-        <button class="btn ">
-            <a href="{{ route('dashboard') }}" class="btn btn-primary p-2 float-start">Back to List</a>
-        </button>
-    </div>
-    <div class="card mb-6">
-        <!-- Account -->
+@extends('landing.include.first')
 
-        <div class="card-body">
-            <div class="d-flex align-items-start align-items-sm-center gap-6">
-                <img src="{{asset(Auth::user()->image)}}" alt="user-avatar" class="d-block w-px-100 h-px-100 rounded" id="uploadedAvatar">
+@section('style')
+<link rel="stylesheet" href="{{ asset('land/css/user.css') }}">
+@endsection
+
+<div class="container-xl px-4 mt-4">
+
+    <hr class="mt-0 mb-4">
+    <div class="row">
+        <div class="col-xl-4">
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-header">Profile Picture</div>
+                <div class="card-body text-center">
+                    @if($user->Image)
+                        <img src="{{ asset($user->Image) }}" alt="Profile Image">
+                    @else
+                        <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Default Image">
+                    @endif
+                    <span class="font-weight-bold">{{ $user->name }}</span>
+                    <br>
+                        <span class="font-weight-bold">{{ $user->Address }}</span>
+                        <br>
+                        <span class="font-weight-bold">{{ $user->mobile }}</span>
+                        <br>
+
+                        <span class="text-black-50">{{ $user->email }}</span>
+                </div>
             </div>
         </div>
-        <div class="card-body pt-0">
-            <!-- Show success alert if session has a success message -->
-            @if(session('success'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('success') }}
-                </div>
-            @endif
+        <div class="col-xl-8">
+            <div class="card mb-4">
+                <div class="card-header">Account Details</div>
+                <div class="card-body">
+                    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
 
-            <form id="formAccountSettings" method="POST" action="{{route('dashboard.admin.update',Auth::user()->id)}}" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-                <div class="row mt-1 g-5">
-                    <div class="col-md-6">
-                        <div class="form-floating form-floating-outline">
-                            <input class="form-control" type="text" id="firstName" name="name" value="{{Auth::user()->name}}" autofocus="">
-                            <label for="firstName"> Name</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-floating form-floating-outline">
-                            <input class="form-control" type="text" id="email" name="email" value="{{Auth::user()->email}}" placeholder="john.doe@example.com">
-                            <label for="email">E-mail</label>
-                        </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="input-group input-group-merge">
-                            <div class="form-floating form-floating-outline">
-                                <input type="text" id="phoneNumber" name="mobile" class="form-control" value="{{Auth::user()->mobile}}" placeholder="202 555 0111">
-                                <label for="phoneNumber">Phone Number</label>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputUsername">Your Name</label>
+                            <input class="form-control @error('name') is-invalid @enderror"
+                                   id="inputUsername"
+                                   name="name"
+                                   type="text"
+                                   placeholder="Enter your name"
+                                   value="{{ old('name', $user->name) }}"
+                                   required>
+                            @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                            <input class="form-control @error('email') is-invalid @enderror"
+                                   id="inputEmailAddress"
+                                   name="email"
+                                   type="email"
+                                   placeholder="Enter your email address"
+                                   value="{{ old('email', $user->email) }}"
+                                   required>
+                            @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="row gx-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputPhone">Phone number</label>
+                                <input class="form-control @error('mobile') is-invalid @enderror"
+                                       id="inputPhone"
+                                       name="mobile"
+                                       type="text"
+                                       placeholder="Enter your phone number"
+                                       value="{{ old('mobile', $user->mobile) }}"
+                                       required>
+                                @error('mobile')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputPassword">New Password</label>
+                                <input class="form-control @error('password') is-invalid @enderror"
+                                       id="inputPassword"
+                                       name="password"
+                                       type="password"
+                                       placeholder="Enter new password (optional)">
+                                @error('password')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputPasswordConfirmation">Confirm New Password</label>
+                                <input class="form-control"
+                                       id="inputPasswordConfirmation"
+                                       name="password_confirmation"
+                                       type="password"
+                                       placeholder="Confirm your new password">
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="form-floating form-floating-outline">
-                            <input type="file" id="profileImage" name="image" class="form-control">
-                            <label for="profileImage">Change Profile Image</label>
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputImage">Profile Image</label>
+                            <input class="form-control @error('image') is-invalid @enderror"
+                                   id="inputImage"
+                                   name="image"
+                                   type="file"
+                                   accept="image/*">
+                            @error('image')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                            @if($user->image)
+                                <div class="mt-2">
+                                    <img src="{{ asset($user->image) }}" alt="Current Profile" class="img-thumbnail" style="max-width: 100px;">
+                                </div>
+                            @endif
                         </div>
-                    </div>
-                </div>
-                <div class="mt-6">
-                    <button type="submit" class="btn btn-primary me-3 waves-effect waves-light">Save changes</button>
-                </div>
-            </form>
-        </div>
-        <!-- /Account -->
-    </div>
 
-@endsection
+                        <div class="d-flex gap-2">
+                            <button class="btn" style="background-color: #16325B; color: white;" type="submit">
+                                <i class="fas fa-save me-1"></i> Save changes
+                            </button>
+                            <a href="{{ url('/landpage') }}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-1"></i> Back
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

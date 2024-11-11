@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 
 class DashvoardController extends Controller
 {
-    $room = Room::all(); 
-    $users = User::all();
 
+    public function dashboard() {
+        $room = Room::all(); 
+        $users = User::all();
 
-    return view('dashboard.include.dash', compact('room', 'users'));
+        return view('dashboard.include.dash', compact('room', 'users'));
+    }
+    
 }

@@ -5,7 +5,7 @@ use App\Http\Controllers\CampingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashvoardController;
-use App\Http\Controllers\EmployeeController;
+// use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OurroomController;
 use App\Http\Controllers\RoomRenderController;
+use App\Http\Controllers\ShowRoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,8 +41,8 @@ Route::get('/camping', function () {
 // Route::get('/viewroom', function () {
 //     return view('landing.include.viewroom');
 // });
-
-Route::get('/room/{id}' , [RoomRenderController::class, 'show'])->name('rooms.render');
+Route::get('/room/{id}', ShowRoomController::class)->name('rooms.render');
+// Route::get('/room/{id}', [RoomRenderController::class, 'show'])->name('rooms.render');
 
 // Route::get('/viewroom/{id}', [RoomController::class, 'show'])->name('viewroom');
 
@@ -66,11 +67,9 @@ Route::resource('bookings', BookingController::class);
 
 
 Route::get('/profile/edit', [UserProfileController::class, 'edit'])->name('profile.edit');
-Route::post('/profile/update', [UserProfileController::class, 'update'])->name('profile.update');
+Route::put('/profile/update', [UserProfileController::class, 'update'])->name('profile.update');
 
-Route::get('/dashboard', [DashvoardController::class, 'dashboard'])->name('dashboard');
-
-
+Route::get('/', [DashvoardController::class, 'dashboard'])->name('dashboard')->middleware(['auth','Manager']);
 
 
 
@@ -85,9 +84,11 @@ Route::get('/dashboard', [DashvoardController::class, 'dashboard'])->name('dashb
 
 
 
-Route::get('/', function () {
-    return view('dashboard.include.dash');
-})->middleware(['auth','Manager']);;
+
+
+// Route::get('/', function () {
+//     return view('dashboard.include.dash');
+// })->middleware(['auth','Manager']);;
 
 Auth::routes();
 

@@ -6,14 +6,15 @@
     <div class="col-md-12 col-lg-4">
         <div class="card">
             <div class="card-body text-nowrap">
-                <h5 class="card-title mb-0 flex-wrap text-nowrap">Welcome, {{ Auth::user()->name }} 🎉</h5>
+                
+                <h5 class="card-title mb-0 flex-wrap text-nowrap">Welcome, {{ Auth::user()->name }} 🎉
+                <img src="{{ asset(Auth::user()->Image) }}" alt="Profile Image" width="100" height="100">
+                </h5>
                 <p class="text-primary mb-2">Admin ID: {{ Auth::user()->id }}</p>
+                 
             </div>
-            <img
-                src="../assets/img/illustrations/trophy.png"
-                class="position-absolute bottom-0 end-0 me-5 mb-5"
-                width="83"
-                alt="Welcome" />
+          
+
         </div>
     </div>
     <!--/ Congratulations card -->
@@ -59,10 +60,7 @@
                                     <i class="ri-test-tube-line ri-24px"></i>
                                 </div>
                             </div>
-                            <div class="ms-3">
-                                <p class="mb-0">Testimonials</p>
-                                <h5 class="mb-0">{{ $testimonials->count() }}</h5>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="col-md-3 col-6">
@@ -86,9 +84,7 @@
             <!-- Total Profit -->
             <div class="col-sm-6">
                 <div class="card h-100">
-                    <div class="card-header pb-0">
-                        <h4 class="mb-0">${{ $totalProfit }}K</h4>
-                    </div>
+                   
                     <div class="card-body">
                         <h6 class="text-left mb-0">Total Profit</h6>
                     </div>
@@ -122,10 +118,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <h6 class="mb-1">Testimonials</h6>
-                        <h4 class="mb-0">{{ $testimonials->count() }}</h4>
-                    </div>
+                  
                 </div>
             </div>
             <!--/ Total Testimonials -->
