@@ -64,8 +64,8 @@
     
     <i class="zmdi zmdi-eye" id="toggleConfirmPassword"></i>
 </div>
-                <button type="submit">Register
-                    
+                <button type="submit" style="background-color: #16325B; color: white;">Register
+                <i class="zmdi zmdi-arrow-right"></i>
                 </button>
                 <br>
                 <div class="already-have-account">
