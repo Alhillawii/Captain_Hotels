@@ -1,7 +1,7 @@
 @include('landing.include.first')
 @include('landing.include.nav')
 
-<div class="hero-wrap" style="background-image: url('land/images/bg_1.jpg');">
+<div class="hero-wrap" style="background-image: url('land/images/hero.jpg');">  
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text d-flex align-items-end justify-content-center">

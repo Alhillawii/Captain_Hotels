@@ -9,7 +9,7 @@
 	    <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 	            <li class="nav-item active"><a href="{{ url('landpage') }}" class="nav-link">Home</a></li>
-	            <li class="nav-item"><a href="{{ url('viewroom') }}" class="nav-link">Rooms</a></li>
+	            <li class="nav-item"><a href="{{ url('room') }}" class="nav-link">Rooms</a></li>
 	            <li class="nav-item"><a href="{{ url('rest') }}" class="nav-link">Restaurant</a></li>
 	            <li class="nav-item"><a href="{{ url('camping') }}" class="nav-link">camping</a></li>
 	            <li class="nav-item"><a href="{{ url('contact') }}" class="nav-link">Contact</a></li>
