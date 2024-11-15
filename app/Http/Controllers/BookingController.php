@@ -27,31 +27,32 @@ class BookingController extends Controller
     {
         $users = User::all();
         $rooms = Room::all();
+        // dd($users, $rooms);
     
         return view('dashboard.booking.create' , compact('users' , 'rooms'));
     }
 
     public function store(Request $request)
     {
+        
         $request->validate([
             'Start_date' => 'required|date',
-            'End_date' => 'required|date',
-            'nationality' => 'required|string|max:255',
-            'identification_document' => 'required|string|max:255',
-            'status' => 'required|string|max:255',
-            'payment_method' => 'required|string|max:255',
-            'room_id' => 'nullable|exists:rooms,id',
-            'camping_id' => 'nullable|exists:campings,id',
-            'user_id' => 'required|exists:users,id',
-            'room_id' => 'required|exists:rooms,id',
-            'check_in' => 'required|date', 
-            'check_out' => 'required|date|after:check_in', 
-    
+            'End_date' => 'required|date|after:Start_date', 
+            'room_id' => 'nullable|exists:rooms,id', 
         ]);
-
-        Booking::create($request->all());
+    
+      
+        Booking::create([
+            'Start_date' => $request->input('Start_date'),
+            'End_date' => $request->input('End_date'),
+            'user_id' => auth()->id(), 
+            'room_id' => $request->input('room_id'), 
+        ]);
+    
+        // Redirect with a success message
         return redirect()->route('bookings.index')->with('success', 'Booking created successfully.');
     }
+    
 
     public function show(Booking $booking)
     {
@@ -68,12 +69,8 @@ class BookingController extends Controller
         $request->validate([
             'Start_date' => 'required|date',
             'End_date' => 'required|date',
-            'nationality' => 'required|string|max:255',
-            'identification_document' => 'required|string|max:255',
-            'status' => 'required|string|max:255',
-            'payment_method' => 'required|string|max:255',
             'room_id' => 'nullable|exists:rooms,id',
-            'camping_id' => 'nullable|exists:campings,id',
+            
         ]);
 
         $booking->update($request->all());

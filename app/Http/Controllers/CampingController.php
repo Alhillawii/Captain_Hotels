@@ -35,29 +35,22 @@ class CampingController extends Controller
     {
         $request->validate([
             'number_of_persons' => 'required|integer',
-            'Camp_img' =>  'nullable|mimes:png,jpg,jpeg,webp',
             'camp_days' => 'required|integer',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'phone' => 'required|string|max:15',
         ]);
 
-        if($request->has('Camp_img')){
-           
-            $file = $request->file('Camp_img');
-            $extension = $file->getClientOriginalExtension();
-
-            $filename = time().'.'.$extension;
-
-            $path = 'uploads/Camp_img/';
-            $file->move($path, $filename);
-        }
- 
         Camping::create([
             'number_of_persons' => $request->number_of_persons,
-            'Camp_img' => $path.$filename,
             'camp_days' => $request->camp_days,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
         ]);
         // Camping::create($request->all());
 
-        return redirect()->route('campings.index')->with('success', 'Camping created successfully.');
+        return redirect()->route('camp.form')->with('success', 'Camping created successfully.');
     }
 
    
@@ -77,40 +70,25 @@ class CampingController extends Controller
     {
         $request->validate([
             'number_of_persons' => 'required|integer',
-            'Camp_img' => 'nullable',
-            'Camp_img.*' => 'mimes:png,jpg,jpeg,webp',
             'camp_days' => 'required|integer',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'phone' => 'required|string|max:15',
         ]);
 
-        if($request->has('Camp_img')){
-           
-            $file = $request->file('Camp_img');
-            $extension = $file->getClientOriginalExtension();
-
-            $filename = time().'.'.$extension;
-
-            $path = 'uploads/Camp_img/';
-            $file->move($path, $filename);
-
-            // if(File::exists(path: $user->Image)){
-            //     File::delete($user->Image);
-
-            // }
-        }
+ 
 
 
         // $camping->update($request->all());
         $camping->update([
             'number_of_persons' => $request->number_of_persons,
             'camp_days' => $request->camp_days,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
         ]);
 
-        if (
-            isset($path)) {
-           $camping->update([
-             'Camp_img' => $path.$filename,
-           ]);
-         }
+     
 
         return redirect()->route('campings.index')->with('success', 'Camping updated successfully.');
     }

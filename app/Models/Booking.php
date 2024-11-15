@@ -12,7 +12,8 @@ class Booking extends Model
 
     protected $guarded = [];
 
-    protected $table = 'booking';
+
+    protected $table = 'users';
 
 
 
@@ -25,4 +26,12 @@ class Booking extends Model
     {
         return $this->belongsTo(Camping::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+
 }

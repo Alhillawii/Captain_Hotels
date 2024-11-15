@@ -14,8 +14,16 @@
             <input type="number" name="camp_days" class="form-control" required>
         </div>
         <div class="form-group">
-            <label>Camp Image</label>
-            <input type="file" name="Camp_img" class="form-control">
+            <label>Name</label>
+            <input type="name" name="name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="phone" name="phone" class="form-control">
         </div>
       
         <br>

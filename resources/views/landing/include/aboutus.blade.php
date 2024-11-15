@@ -42,7 +42,8 @@
                 Captain’s camp in the perfect place to zone out from all the cites distractions.</p>
 							<p>Captain's Camp is the adventourous sector of captain's experience , therefore it's all inspired from jordan's sahara with the colors of the mountains , 
                 ancient language and bedouin textures</p>
-							<ul class="ftco-social d-flex">
+                <a href="{{ url('campform') }}" class="btn rounded-pill me-3 py-2 px-4 m-4" style="background-color: #16325B; color: white; text-decoration: none;">Book Now</a>
+                <ul class="ftco-social d-flex">
                 <li class="ftco-animate"><a href="https://www.facebook.com/captain.hotel"><span class="icon-facebook"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
               </ul>

@@ -15,10 +15,7 @@ class Camping extends Model
 
 
 
-    public function booking()
-    {
-        return $this->hasMany(Booking::class);
-    }
+  
 
     public function toSearchableArray()
     {
@@ -26,6 +23,9 @@ class Camping extends Model
             'number_of_persons' =>$this->number_of_persons,
             'Camp_days' =>$this->Camp_days, 
                'id' =>$this->id, 
+               'name' =>$this->name, 
+               'email' =>$this->email, 
+               'phone' =>$this->phone, 
         ];
     } 
 }

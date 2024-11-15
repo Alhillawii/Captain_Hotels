@@ -31,6 +31,10 @@ class User extends Authenticatable
         return $this->belongsTo(Manager::class);
     }
 
+    public function booking(){
+        return $this->hasMany(Booking::class);
+    }
+
   
     
 

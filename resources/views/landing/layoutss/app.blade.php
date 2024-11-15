@@ -50,7 +50,7 @@
                             <h3 class="mb-3">
                                 <a href="{{ url('room-single/' . $room->id) }}">{{ $room->Roomtype }}</a>
                             </h3>
-                            <p><span class="price mr-2">${{ $room->price }}</span> <span class="per">per night</span></p>
+                            <p><span class="price mr-2">{{ $room->price }}</span> <span class="per">per night</span></p>
                             <hr>
                             <p class="pt-1">
                                 <!-- <a href="{{ 'viewroom' , $room->id}}" class="btn-custom">

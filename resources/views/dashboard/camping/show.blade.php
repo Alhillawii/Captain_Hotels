@@ -11,13 +11,9 @@
         <div class="card-body">
             <p><strong>Number of Persons:</strong> {{ $camping->number_of_persons }}</p>
             <p><strong>Camp Days:</strong> {{ $camping->camp_days }}</p>
-            
-            @if ($camping->Camp_img)
-                <p><strong>Camp Image:</strong></p>
-                <img src="{{ asset($camping->Camp_img) }}" style="width: 150px; height: 150px;" alt="Camp Image">
-            @else
-                <p><strong>Camp Image:</strong> No Image Available</p>
-            @endif
+            <p><strong>Name:</strong> {{ $camping->name }}</p>
+            <p><strong>Email:</strong> {{ $camping->email }}</p>
+            <p><strong>Phone:</strong> {{ $camping->phone }}</p>
         </div>
         <div class="card-footer">
             <a href="{{ route('campings.index') }}" class="btn btn-secondary">Back</a>

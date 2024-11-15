@@ -13,9 +13,11 @@
         <thead>
             <tr>
                 <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
                 <th>Number of Persons</th>
                 <th>Camp Days</th>
-                <th>Camp Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,11 +25,11 @@
             @foreach ($campings as $camping)
             <tr>
                 <td>{{ $camping->id }}</td>
+                <td>{{ $camping->name }}</td>
+                <td>{{ $camping->email }}</td>
+                <td>{{ $camping->phone }}</td>
                 <td>{{ $camping->number_of_persons }}</td>
                 <td>{{ $camping->camp_days }}</td>
-                <td>
-                    <img src="{{ asset($camping->Camp_img) }}" style="width: 50px; height: 50px;" alt="Camp Image"/>
-                </td>
                 <td>
                    
                     <a href="{{ route('campings.show', $camping->id) }}" class="btn" title="View">

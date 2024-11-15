@@ -14,8 +14,10 @@ return new class extends Migration
     {
         Schema::create('campings', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');  
+            $table->string('phone');  
             $table->integer('number_of_persons');
-            $table->string('Camp_img')->nullable();
             $table->integer('camp_days');
             $table->softDeletes();
             $table->timestamps();

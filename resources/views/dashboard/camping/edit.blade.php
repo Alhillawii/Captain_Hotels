@@ -17,12 +17,18 @@
             <input type="number" name="camp_days" class="form-control" value="{{ $camping->camp_days }}" required>
         </div>
         
+        </div>
         <div class="form-group">
-            <label for="Camp_img">Camp Image</label>
-            <input type="file" name="Camp_img" class="form-control">
-            @if($camping->Camp_img)
-                <img src="{{ asset($camping->Camp_img) }}" style="width: 100px; height: 100px;" alt="Camp Image">
-            @endif
+            <label>Name</label>
+            <input type="name" name="name" class="form-control"  value="{{ $camping->name }}" required >
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control"  value="{{ $camping->email }}" required>
+        </div>
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="phone" name="phone" class="form-control"  value="{{ $camping->phone }}" required>
         </div>
         
         <br>

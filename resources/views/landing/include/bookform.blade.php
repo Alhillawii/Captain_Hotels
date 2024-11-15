@@ -1,4 +1,7 @@
-<section class="ftco-booking">
+@include('landing.include.first')
+
+
+
     	<div class="container">
     		<div class="row">
     			<div class="col-lg-12">
@@ -70,4 +73,7 @@
 	    		</div>
     		</div>
     	</div>
-    </section>
+
+
+
+@include('landing.include.last')

@@ -30,6 +30,9 @@
             <a href="{{ route('bookings.index') }}" class="nav-item nav-link {{ Request::is('bookings') ? 'active' : '' }}" style="color: #16325B; display: flex; align-items: center;">
             <i class="fa fa-table me-2" style="color: #16325B; margin-right: 8px;"></i>Booking
 </a>
+            <a href="{{ route('testimonials.index') }}" class="nav-item nav-link {{ Request::is('testimonials') ? 'active' : '' }}" style="color: #16325B; display: flex; align-items: center;">
+            <i class="fa fa-table me-2" style="color: #16325B; margin-right: 8px;"></i>Testimonials
+</a>
 
         </div>
     </nav>

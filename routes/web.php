@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OurroomController;
 use App\Http\Controllers\RoomRenderController;
 use App\Http\Controllers\ShowRoomController;
+use App\Http\Controllers\TestimonialController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +39,8 @@ Route::get('/profileuser', function () {
 });
 Route::get('/camping', function () {
     return view('landing.include.aboutus');
-});
-// Route::get('/viewroom', function () {
+})->name('camp.form');
+// Route::get('/room', function () {
 //     return view('landing.include.viewroom');
 // });
 Route::get('/room/{id}', ShowRoomController::class)->name('rooms.render');
@@ -49,6 +51,12 @@ Route::get('/room/{id}', ShowRoomController::class)->name('rooms.render');
 
 Route::get('/contact', function () {
     return view('landing.include.contact'); 
+});
+Route::get('/book', function () {
+    return view('landing.include.bookform'); 
+});
+Route::get('/campform', function () {
+    return view('booking.camping'); 
 });
 Route::get('/rest', function () {
     return view('landing.include.restaurant');
@@ -64,6 +72,8 @@ Route::resource('contacts', ContactController::class);
 ///-------------------------------------------- Booking ---------------------------------////
 Route::resource('bookings', BookingController::class);
 ///-------------------------------------------- profileuser ---------------------------------////
+Route::resource('testimonials', TestimonialController::class);
+
 
 
 Route::get('/profile/edit', [UserProfileController::class, 'edit'])->name('profile.edit');

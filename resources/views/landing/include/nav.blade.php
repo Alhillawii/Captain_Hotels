@@ -19,7 +19,8 @@
 	    @if (Route::has('login'))
 		    @auth
 		        @if(Auth::user()->Role === "Manager")
-		            <a href="{{ url('/') }}" class="btn btn-outline-light rounded-pill me-3 py-2 px-4 m-4">Dashboard</a>
+		            <a href="{{ url('/') }}" class="btn  rounded-pill me-3 py-2 px-4 m-4"
+					style="background-color: #16325B; color: white;">Dashboard</a>
 		        @endif
 
 		        <!-- Profile Button -->
