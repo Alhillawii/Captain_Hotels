@@ -43,14 +43,18 @@ Route::get('/camping', function () {
 // Route::get('/room', function () {
 //     return view('landing.include.viewroom');
 // });
-Route::get('/room/{id}', ShowRoomController::class)->name('rooms.render');
+// Route::get('/room/{id}', ShowRoomController::class)->name('rooms.render');
 // Route::get('/room/{id}', [RoomRenderController::class, 'show'])->name('rooms.render');
 
 // Route::get('/viewroom/{id}', [RoomController::class, 'show'])->name('viewroom');
+Route::get('/room/{id}',[ShowRoomController::class, 'showRoom'])->name('rooms.render');
 
 
 Route::get('/contact', function () {
     return view('landing.include.contact'); 
+});
+Route::get('/room', function () {
+    return view('landing.room.rooms'); 
 });
 Route::get('/book', function () {
     return view('landing.include.bookform'); 
