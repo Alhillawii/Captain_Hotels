@@ -13,7 +13,7 @@ class Booking extends Model
     protected $guarded = [];
 
 
-    protected $table = 'users';
+    
 
 
 
