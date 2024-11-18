@@ -8,6 +8,8 @@ use App\Models\Room;
 
 class ShowRoomController extends Controller
 {
+
+
     public function showRoom($id)
     {
         $room = Room::findOrFail($id);

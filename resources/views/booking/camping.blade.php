@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('camp/css/style.css') }}">
 </head>
 <body>
+  
     <div class="main">
         <div class="container">
             <div class="booking-content">
@@ -20,6 +21,8 @@
                     <img class="booking-img" src="{{ asset('camp/images/WhatsApp Image 2024-06-10 at 1.22.12 PM.jpeg') }}" alt="Booking Image">
                 </div>
                 <div class="booking-form">
+
+
                     <form id="booking-form" action="{{ route('campings.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <h2>Book Your Camping Spot!</h2>

@@ -50,7 +50,7 @@ class BookingController extends Controller
         ]);
     
         // Redirect with a success message
-        return redirect()->route('bookings.index')->with('success', 'Booking created successfully.');
+        return redirect()->route('boook.index')->with('success', 'Booking created successfully.');
     }
     
 

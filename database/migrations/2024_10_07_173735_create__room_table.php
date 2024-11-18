@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('Roomtype');
             $table->string('price');
-            $table->boolean('status');
+            $table->string('status');
             $table->text('description');
             $table->decimal('Rate', 8, 2);
             $table->string('Roomimage')->nullable();

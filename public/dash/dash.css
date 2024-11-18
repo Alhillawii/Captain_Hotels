@@ -1,0 +1,50 @@
+/* Enhance card styling */
+.card {
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Avatar styles */
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-icon {
+    font-size: 24px;
+}
+
+/* Statistics cards */
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+.bg-light .avatar-icon {
+    background-color: #007bff;
+}
+
+.bg-light .ms-3 h5 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* User card styling */
+.card-header h6 {
+    font-size: 1rem;
+    color: #6c757d;
+}

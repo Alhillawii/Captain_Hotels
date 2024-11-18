@@ -42,9 +42,7 @@
                         <a href="{{ url('room-single/' . $room->id) }}" 
                            class="img d-flex justify-content-center align-items-center" 
                            style="background-image: url('{{ asset( $room->Roomimage) }}');">
-                            <div class="icon d-flex justify-content-center align-items-center">
-                                <span class="icon-search2"></span>
-                            </div>
+                           
                         </a>
                         <div class="text p-3 text-center">
                             <h3 class="mb-3">

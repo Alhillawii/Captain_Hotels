@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
+    
+
 
 
     <link rel="stylesheet" href="{{asset ('land/css/open-iconic-bootstrap.min.css')}}">

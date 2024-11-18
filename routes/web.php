@@ -9,6 +9,7 @@ use App\Http\Controllers\DashvoardController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
+use App\Models\Room;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OurroomController;
@@ -47,6 +48,11 @@ Route::get('/camping', function () {
 // Route::get('/room/{id}', [RoomRenderController::class, 'show'])->name('rooms.render');
 
 // Route::get('/viewroom/{id}', [RoomController::class, 'show'])->name('viewroom');
+Route::get('/room', function () {
+    $rooms=Room::all();
+   return view('landing.room.rooms' , compact('rooms' )); 
+})->name('rrooms.index');
+
 Route::get('/room/{id}',[ShowRoomController::class, 'showRoom'])->name('rooms.render');
 
 
@@ -54,11 +60,12 @@ Route::get('/contact', function () {
     return view('landing.include.contact'); 
 });
 Route::get('/room', function () {
-    return view('landing.room.rooms'); 
-});
+     $rooms=Room::all();
+    return view('landing.room.rooms' , compact('rooms' )); 
+})->name('boook.index');
 Route::get('/book', function () {
     return view('landing.include.bookform'); 
-});
+})->name('book.index');
 Route::get('/campform', function () {
     return view('booking.camping'); 
 });
