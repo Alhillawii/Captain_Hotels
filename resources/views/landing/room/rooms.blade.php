@@ -58,75 +58,101 @@
     <div class="sidebar-wrap bg-light ftco-animate">
         <h3 class="heading mb-4">Book Now</h3>
 
-        <!-- If User Is Logged In -->
-        @auth
-            <!-- Success Message -->
-            @if (session('success'))
-                <div id="success-message" class="alert alert-success">
-                    {{ session('success') }}
+      <!-- Include SweetAlert2 CDN (if not using npm) -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- If User Is Logged In -->
+@auth
+    <!-- Success Message -->
+    @if (session('success'))
+        <div id="success-message" class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Booking Successful!',
+                text: '{{ session('success') }}',
+                showConfirmButton: false,
+                timer: 3000
+            });
+        </script>
+    @endif
+
+    <!-- Booking Form -->
+    <form action="{{ route('bookings.store') }}" method="POST" class="booking-form">
+        @csrf
+        <div class="fields">
+            <!-- Check-in Date -->
+            <div class="form-group">
+    <label for="checkin_date" class="form-label" style=" color: #16325B;">Check-in Date:</label>
+    <input 
+        type="date" 
+        name="Start_date" 
+        id="checkin_date" 
+        class="form-control @error('Start_date') is-invalid @enderror" 
+        placeholder="Check In Date" 
+        min="{{ \Carbon\Carbon::now()->toDateString() }}" 
+        max="{{ \Carbon\Carbon::now()->addMonth()->toDateString() }}" 
+        value="{{ old('Start_date') }}" 
+        required>
+    @error('Start_date')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+            <br>
+
+            <div class="form-group">
+    <label for="checkout_date" class="form-label" style=" color: #16325B;">Check-out Date:</label>
+    <input 
+        type="date" 
+        name="End_date" 
+        id="checkout_date" 
+        class="form-control @error('End_date') is-invalid @enderror" 
+        placeholder="Check Out Date" 
+        min="{{ \Carbon\Carbon::now()->toDateString() }}" 
+        max="{{ \Carbon\Carbon::now()->addMonth()->toDateString() }}" 
+        value="{{ old('End_date') }}" 
+        required>
+    @error('End_date')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+            <br>
+
+            <!-- Room Selection -->
+            <div class="form-group">
+                <div class="select-wrap one-third">
+                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                    <select name="room_id" id="room_id" class="form-control" required>
+                        <option value="">Select Room Type</option>
+                        @foreach ($rooms as $room)
+                            <option 
+                                value="{{ $room->id }}" 
+                                {{ old('room_id') == $room->id ? 'selected' : '' }}>
+                                {{ $room->Roomtype }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
-            @endif
+            </div>
+            <br>
 
-            <!-- Booking Form -->
-            <form action="{{ route('bookings.store') }}" method="POST" class="booking-form">
-                @csrf
-                <div class="fields">
-                    <!-- Check-in Date -->
-                    <div class="form-group">
-                        <input 
-                            type="date" 
-                            name="Start_date" 
-                            id="checkin_date" 
-                            class="form-control" 
-                            placeholder="Check In Date" 
-                            required 
-                            value="{{ old('Start_date') }}">
-                    </div>
-                    <br>
+            <!-- Submit Button -->
+            <div class="form-group">
+                <input type="submit" value="Submit Booking" class="btn btn-primary py-3 px-5" style="background-color: #16325B; color: white;">
+            </div>
+        </div>
+    </form>
+@endauth
 
-                    <!-- Check-out Date -->
-                    <div class="form-group">
-                        <input 
-                            type="date" 
-                            name="End_date" 
-                            id="checkout_date" 
-                            class="form-control" 
-                            placeholder="Check Out Date" 
-                            required 
-                            value="{{ old('End_date') }}">
-                    </div>
-                    <br>
+<!-- If User Is Not Logged In -->
+@guest
+    <p class="text-center">Please <a href="{{ route('login') }}">login</a> to make a booking.</p>
+@endguest
 
-                    <!-- Room Selection -->
-                    <div class="form-group">
-                        <div class="select-wrap one-third">
-                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                            <select name="room_id" id="room_id" class="form-control" required>
-                                <option value="">Select Room Type</option>
-                                @foreach ($rooms as $room)
-                                    <option 
-                                        value="{{ $room->id }}" 
-                                        {{ old('room_id') == $room->id ? 'selected' : '' }}>
-                                        {{ $room->Roomtype }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <br>
-
-                    <!-- Submit Button -->
-                    <div class="form-group">
-                        <input type="submit" value="Submit Booking" class="btn btn-primary py-3 px-5">
-                    </div>
-                </div>
-            </form>
-        @endauth
-
-        <!-- If User Is Not Logged In -->
-        @guest
-            <p class="text-center">Please <a href="{{ route('login') }}">login</a> to make a booking.</p>
-        @endguest
     </div>
 </div>
 

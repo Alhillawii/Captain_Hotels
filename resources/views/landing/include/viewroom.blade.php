@@ -41,39 +41,7 @@
           	
 
           	
-          		<div class="col-md-12 room-single  mb-5 mt-5">
-          			<h4 class="mb-4">Available Room</h4>
-					  <div class="row">
-                    @foreach($rooms as $room)
-                        <div class="col-sm col-md-6 col-lg-4 ftco-animate">
-                            <div class="room">
-                                <!-- Room Image -->
-                                <a href="{{ url('room-single/' . $room->id) }}" 
-                                   class="img d-flex justify-content-center align-items-center" 
-                                   style="background-image: url('{{ asset($room->Roomimage) }}');">
-                                 
-                                </a>
-                                <!-- Room Details -->
-                                <div class="text p-3 text-center">
-                                    <h3 class="mb-3">
-                                        <a href="{{ url('room-single/' . $room->id) }}">{{ $room->Roomtype }}</a>
-                                    </h3>
-                                    <p>
-                                        <span class="price mr-2">{{ $room->price }}</span> 
-                                        <span class="per">per night</span>
-                                    </p>
-                                    <hr>
-                                    <p class="pt-1">
-                                        <a href="{{ route('rooms.render', $room->id) }}" class="btn-custom">
-                                            Read More <i class="fa fa-arrow-right"></i>
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-          		</div>
+          	
 
           	</div>
           </div> <!-- .col-md-8 -->
@@ -91,11 +59,14 @@
                 <h3>amenities</h3>
                 <li><span>Status:</span> {{ $room->status }}</li>
                         <li><span>Rate:</span> {{ $room->Rate }}</li>
-                <li><a href="#">Payment <span>in our reception</span></a></li>
-                <li><a href="#">Bathroom <span>Done</span></a></li>
-                <li><a href="#">Pool <span>swimmging</span></a></li>
+                <li><a href="#">Payment in our reception</a></li>
+                <li><a href="#">Pool swimmging</a></li>
                 <li><a href="#">Resturant & <span>Cafe</span></a></li>
               </div>
+              <br>
+              <a href="{{ url('/room') }}" class="btn"  style="background-color: #16325B; color: white;">
+                                <i class="fas fa-arrow-left me-1"></i> Back to booking
+                            </a>
             </div>
 
          
