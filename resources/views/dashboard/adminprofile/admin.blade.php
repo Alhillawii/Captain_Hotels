@@ -13,7 +13,7 @@
                 <div class="card-header">Profile Picture</div>
                 <div class="card-body text-center">
                     @if($user->Image)
-                        <img src="{{ asset($user->Image) }}" alt="Profile Image">
+                        <img src="{{ asset($user->Image) }}" alt="Profile Image"  style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 2px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     @else
                         <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Default Image">
                     @endif
@@ -138,7 +138,7 @@
                             <button class="btn" style="background-color: #16325B; color: white;" type="submit">
                                 <i class="fas fa-save me-1"></i> Save changes
                             </button>
-                            <a href="{{ url('/landpage') }}" class="btn btn-secondary">
+                            <a href="{{ url('/') }}" class="btn btn-secondary">
                                 <i class="fas fa-arrow-left me-1"></i> Back
                             </a>
                         </div>

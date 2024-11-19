@@ -25,6 +25,8 @@
           <div class="col-lg-8">
           	<div class="row">
           		<div class="col-md-12 ">
+              <h4>Check-in Time : After 2:00PM | Check-Out Time : 12:00Noon</h4>
+              <h4>Room Rates Per Room Per Night Including Breakfast</h4>
                   <h2 class="mb-4">{{$room->Roomtype}} / {{ $room->price}}</h2>
           			<div>
                       <div class="item">
@@ -35,8 +37,7 @@
           		<div class="col-md-12 room-single mt-4 mb-5 ">
 					
                   <h2 class="mb-4">Description: {{ $room->description }}</h2>
-				  <h4>Check-in Time : After 2:00PM | Check-Out Time : 12:00Noon</h4>
-				  <h4>Room Rates Per Room Per Night Including Breakfast</h4>
+				 
           		</div>
           	
 
@@ -57,11 +58,21 @@
             <div class="sidebar-box ">
               <div class="categories">
                 <h3>amenities</h3>
-                <li><span>Status:</span> {{ $room->status }}</li>
-                        <li><span>Rate:</span> {{ $room->Rate }}</li>
+                <li>
+    <span>Status:</span> 
+    {{ $room->status == 0 ? 'Occupied' : 'Available' }}
+</li>
+
+<li>
+    <span>Rate:</span> 
+    @for ($i = 1; $i <= $room->Rate; $i++)
+        <i class="fas fa-star" style="color: gold;"></i>
+    @endfor
+</li>
+
                 <li><a href="#">Payment in our reception</a></li>
                 <li><a href="#">Pool swimmging</a></li>
-                <li><a href="#">Resturant & <span>Cafe</span></a></li>
+                <li><a href="#">Resturant & Cafe</a></li>
               </div>
               <br>
               <a href="{{ url('/room') }}" class="btn"  style="background-color: #16325B; color: white;">

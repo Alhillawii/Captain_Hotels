@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <h1>Bookings</h1>
-    <a href="{{ route('bookings.create') }}" class="btn btn-primary border-0" style="background-color: #16325B;">Add Booking</a>
+   
+
 
     @if (session('success'))
     <div class="alert alert-success" id="success-message">{{ session('success') }}</div>
@@ -15,9 +15,8 @@
                 <th>#</th>
                 <th>Start Date</th>
                 <th>End Date</th>
-                <th>Nationality</th>
-                <th>Status</th>
-                <th>Payment Method</th>
+                <th>User</th>
+                <th>Room</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -27,18 +26,15 @@
                 <td>{{ $booking->id }}</td>
                 <td>{{ $booking->Start_date }}</td>
                 <td>{{ $booking->End_date }}</td>
-                <td>{{ $booking->nationality }}</td>
-                <td>{{ $booking->status }}</td>
-                <td>{{ $booking->payment_method }}</td>
+                <td>{{ $booking->room->Roomtype }}</td>
+                <td>{{ $booking->user->name }}</td>
 
                 <td>
                     <a href="{{ route('bookings.show', $booking->id) }}" class="btn" title="View">
                         <i class="fas fa-eye" style="color: #17a2b8;"></i>
                     </a>
 
-                    <a href="{{ route('bookings.edit', $booking->id) }}" class="btn" title="Edit">
-                        <i class="fas fa-edit" style="color: #ffc107;"></i>
-                    </a>
+                  
 
                     <form action="{{ route('bookings.destroy', $booking->id) }}" method="POST" class="d-inline delete-form" style="display:inline;">
                         @csrf
@@ -56,17 +52,14 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-
         document.querySelectorAll('.delete-btn').forEach(button => {
             button.addEventListener('click', function(event) {
                 event.preventDefault();
 
                 const form = this.closest('.delete-form');
-                const bookingId = form.querySelector('.booking-id') ? form.querySelector('.booking-id').innerText : 'this booking'; // Get booking ID if available
-
                 Swal.fire({
                     title: 'Are you sure?',
-                    text: `You are about to delete booking #${bookingId}. This action cannot be undone!`,
+                    text: `You are about to delete this booking. This action cannot be undone!`,
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#d33',
@@ -89,5 +82,4 @@
         }
     });
 </script>
-
 @endsection

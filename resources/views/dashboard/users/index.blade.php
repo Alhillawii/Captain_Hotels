@@ -2,9 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Users</h1>
-    <a href="{{ route('users.create') }}" class="btn btn-primary border-0" style="background-color: #16325B;">Add User</a>
-
+   
 
     @if (session('success'))
     <div class="alert alert-success" id="success-message">{{ session('success') }}</div>

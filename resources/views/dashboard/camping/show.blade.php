@@ -17,7 +17,7 @@
         </div>
         <div class="card-footer">
             <a href="{{ route('campings.index') }}" class="btn btn-secondary">Back</a>
-            <a href="{{ route('campings.edit', $camping->id) }}" class="btn btn-warning">Edit</a>
+           
         </div>
     </div>
 </div>

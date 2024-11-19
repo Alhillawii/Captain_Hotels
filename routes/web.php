@@ -72,6 +72,9 @@ Route::get('/campform', function () {
 Route::get('/rest', function () {
     return view('landing.include.restaurant');
 });
+
+Route::patch('/bookings/{id}/update-status', [BookingController::class, 'updateStatus'])->name('bookings.updateStatus');
+
 ///-------------------------------------------- users ---------------------------------////
 Route::resource('users', UserController::class);
 ///-------------------------------------------- Camping ---------------------------------////

@@ -4,6 +4,10 @@
 <link rel="stylesheet" href="{{ asset('land/css/user.css') }}">
 @endsection
 
+<title>Captain's Hotel</title>
+    <link rel="icon" type="image/png" href="{{ asset('dash/img/logocap.png') }}">
+
+
 <div class="container-xl px-4 mt-4">
 
     <hr class="mt-0 mb-4">
@@ -13,10 +17,11 @@
                 <div class="card-header">Profile Picture</div>
                 <div class="card-body text-center">
                     @if($user->Image)
-                        <img src="{{ asset($user->Image) }}" alt="Profile Image">
+                    <img src="{{ asset($user->Image) }}" alt="Profile Image" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 2px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     @else
                         <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Default Image">
                     @endif
+                    <br>
                     <span class="font-weight-bold">{{ $user->name }}</span>
                     <br>
                         <span class="font-weight-bold">{{ $user->Address }}</span>

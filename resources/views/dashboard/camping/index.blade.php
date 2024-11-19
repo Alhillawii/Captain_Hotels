@@ -2,8 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Campings</h1>
-    <a href="{{ route('campings.create') }}" class="btn btn-primary border-0" style="background-color: #16325B;">Add Camping</a>
+   
 
     @if (session('success'))
     <div class="alert alert-success" id="success-message">{{ session('success') }}</div>
@@ -37,9 +36,7 @@
                     </a>
 
                     
-                    <a href="{{ route('campings.edit', $camping->id) }}" class="btn" title="Edit">
-                        <i class="fas fa-edit" style="color: #ffc107;"></i>
-                    </a>
+                  
 
                     
                     <form action="{{ route('campings.destroy', $camping->id) }}" method="POST" class="d-inline delete-form" style="display:inline;">

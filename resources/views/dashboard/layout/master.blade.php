@@ -7,7 +7,7 @@
     <title>Captain's Hotel</title>
 
 
-    <link rel="icon" type="image/png" href="{{asset('img/logocap.png')}}">
+    <link rel="icon" type="image/png" href="{{asset('dash/img/logocap.png')}}">
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">

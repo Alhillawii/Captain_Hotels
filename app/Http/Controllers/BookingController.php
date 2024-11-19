@@ -70,12 +70,25 @@ class BookingController extends Controller
             'Start_date' => 'required|date',
             'End_date' => 'required|date',
             'room_id' => 'nullable|exists:rooms,id',
+            'user_id' => 'nullable|exists:users,id',
             
         ]);
 
-        $booking->update($request->all());
+        $booking->update([
+          'status' => $request->input('status')
+        ]);
         return redirect()->route('bookings.index')->with('success', 'Booking updated successfully.');
     }
+
+    public function updateStatus(Request $request, $id)
+{
+    $booking = Booking::findOrFail($id);
+    $booking->status = $request->input('status');
+    $booking->save();
+
+    return redirect()->back()->with('success', 'Booking status updated successfully!');
+}
+
 
     public function destroy(Booking $booking)
     {

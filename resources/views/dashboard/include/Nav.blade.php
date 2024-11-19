@@ -1,7 +1,7 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
    <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-    <img src="{{ asset('dash/img/logoromveback.png') }}" alt="Company Logo" style="width: 40px; height: 40px;">
+    <img src="{{ asset('/dash/img/logoromveback.png') }}" alt="Company Logo" style="width: 40px; height: 40px;">
 </a>
 
     <a href="#" class="sidebar-toggler flex-shrink-0">

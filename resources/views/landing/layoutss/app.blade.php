@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Deluxe - Free Bootstrap 4 Template by Colorlib</title>
+    
+  <title>Captain's Hotel</title>
+    <link rel="icon" type="image/png" href="{{ asset('dash/img/logocap.png') }}">
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     @include('landing.include.first')
